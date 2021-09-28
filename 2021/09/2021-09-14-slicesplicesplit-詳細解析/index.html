@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[2021-09-14] slice()、splice()、split() 詳細解析",
+  
+  "datePublished": "2021-09-14T00:00:00Z",
+  "dateModified": "2021-09-14T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "elvis1056 程式治療",
+    
+    "image": "https://elvis1056.github.io/images/picture.jpg"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/elvis1056.github.io\/2021\/09\/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "elvis1056 部落格 - 程式治療",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elvis1056.github.io/images/picture.jpg"
+    }
+    
+  },
+  "description": "紀錄自己的筆記讓自己回頭來看更容易統整\n這邊處理的型態分為兩種\n",
+  "keywords": ["slice, splice, split"]
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.87.0 with theme Tranquilpeak 0.5.2-BETA">
+<meta name="author" content="elvis1056 程式治療">
+<meta name="keywords" content="slice, splice, split">
+<meta name="description" content="紀錄自己的筆記讓自己回頭來看更容易統整
+這邊處理的型態分為兩種">
+
+
+<meta property="og:description" content="紀錄自己的筆記讓自己回頭來看更容易統整
+這邊處理的型態分為兩種">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[2021-09-14] slice()、splice()、split() 詳細解析">
+<meta name="twitter:title" content="[2021-09-14] slice()、splice()、split() 詳細解析">
+<meta property="og:url" content="https://elvis1056.github.io/2021/09/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90/">
+<meta property="twitter:url" content="https://elvis1056.github.io/2021/09/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90/">
+<meta property="og:site_name" content="elvis1056 部落格 - 程式治療">
+<meta property="og:description" content="紀錄自己的筆記讓自己回頭來看更容易統整
+這邊處理的型態分為兩種">
+<meta name="twitter:description" content="紀錄自己的筆記讓自己回頭來看更容易統整
+這邊處理的型態分為兩種">
+<meta property="og:locale" content="zh-tw">
+
+  
+    <meta property="article:published_time" content="2021-09-14T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-09-14T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="javascript">
+    
+  
+  
+    
+      <meta property="article:tag" content="slice">
+    
+      <meta property="article:tag" content="splice">
+    
+      <meta property="article:tag" content="split">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://elvis1056.github.io/images/picture.jpg">
+  <meta property="twitter:image" content="https://elvis1056.github.io/images/picture.jpg">
+
+
+
+
+
+
+    <title>[2021-09-14] slice()、splice()、split() 詳細解析</title>
+
+    <link rel="icon" href="https://elvis1056.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://elvis1056.github.io/2021/09/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://elvis1056.github.io/css/style-c5yjx2losbmkttdif4mskx5f9pqjjquywurgngxfvceyyrtyatseix5hpd.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://elvis1056.github.io/" aria-label="去首頁">elvis1056 部落格 - 程式治療</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://elvis1056.github.io/#about" aria-label="打開鏈接: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://elvis1056.github.io/images/picture.jpg" alt="作者的圖片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://elvis1056.github.io/#about" aria-label="閱讀有關作者的更多信息">
+          <img class="sidebar-profile-picture" src="https://elvis1056.github.io/images/picture.jpg" alt="作者的圖片" />
+        </a>
+        <h4 class="sidebar-profile-name">elvis1056 程式治療</h4>
+        
+          <h5 class="sidebar-profile-bio">紀錄每件事物，世界很大盡力去學習 Software Engineer. Web Developer keep going Front-end</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://elvis1056.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">首頁</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://elvis1056.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">分類</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://elvis1056.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">標籤</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://elvis1056.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">所有文章</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://elvis1056.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">關於</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/elvis1056" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.cakeresume.com/elvis1056" target="_blank" rel="noopener" title="cakeresume">
+    
+      <i class="sidebar-button-icon fab fa-lg far fa-address-book" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">cakeresume</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      [2021-09-14] slice()、splice()、split() 詳細解析
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2021-09-14T00:00:00Z">
+        
+  九月 14, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>分類</span>
+    
+      <a class="category-link" href="https://elvis1056.github.io/categories/javascript">javascript</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>紀錄自己的筆記讓自己回頭來看更容易統整</p>
+<p>這邊處理的型態分為兩種</p>
+<!-- raw HTML omitted -->
+<h1 id="table-of-contents">目錄</h1>
+<nav id="TableOfContents"></nav>
+
+<p>這邊處理的型態分為兩種</p>
+<ol>
+<li>
+<p>陣列</p>
+<ul>
+<li>
+<p>Array.prototype.slice()</p>
+<p>會改變原始陣列：不會</p>
+<p>是否有 return：有！</p>
+<p>return 什麼：會回傳一個指定索引範圍的新陣列（不改變原陣列）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">slice</span>([<span style="color:#a6e22e">begin</span>[, <span style="color:#a6e22e">end</span>]])
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+
+<span style="color:#75715e">// 無參數，從 0 ~ (arr.length - 1)
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">slice</span>()); <span style="color:#75715e">// [0, 1, 2, 3, 4, 5]
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// 從 2 開始到 (arr.length - 1) 結束
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">2</span>)); <span style="color:#75715e">// [2, 3, 4, 5]
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// 從 2 開始到 (3 - 1) 結束
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>) ); <span style="color:#75715e">// [2, 3]
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// 從開始直接填寫負數 (arr.length - 2) 到 (arr.length - 1) 結束
+</span><span style="color:#75715e">// 這個部分比較不直觀，可以再多幾個範例來理解，目前實務上我不會想用
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>) );  <span style="color:#75715e">// [4, 5]
+</span></code></pre></div></li>
+<li>
+<p>Array.prototype.splice()</p>
+<p>會改變原始陣列：會</p>
+<p>是否有 return：有！注意有條件的 return</p>
+<p>return 什麼：</p>
+<p>依照所填入的參數來決定 return 什麼，直接看下面的範例</p>
+<p>注意：第一個參數是必填的後面兩個參數是選擇性的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#a6e22e">start</span>[, <span style="color:#a6e22e">deleteCount</span>[, <span style="color:#a6e22e">item1</span>[, <span style="color:#a6e22e">item2</span>[, ...]]]])
+
+<span style="color:#ae81ff">1.</span> <span style="color:#a6e22e">簡單運用</span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">splice</span>() ) <span style="color:#75715e">// []
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">2</span>) ) <span style="color:#75715e">// [2, 3, 4, 5]
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">arr</span> ) <span style="color:#75715e">// [0, 1]
+</span><span style="color:#75715e"></span>
+<span style="color:#ae81ff">2.</span> <span style="color:#a6e22e">只填第一個參數</span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">removed2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr2</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">2</span>);
+
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">arr2</span> );  <span style="color:#75715e">// [0, 1]
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">removed2</span> ); <span style="color:#75715e">// [2, 3, 4, 5]
+</span><span style="color:#75715e"></span>
+<span style="color:#ae81ff">3.</span> <span style="color:#a6e22e">填入第一個與第二個參數</span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr3</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">removed3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr3</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>);
+
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr3</span>);     <span style="color:#75715e">// [0, 1, 4, 5]
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">removed3</span>); <span style="color:#75715e">// [2, 3]
+</span><span style="color:#75715e"></span>
+<span style="color:#ae81ff">4.</span> <span style="color:#a6e22e">填入第一個</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">第二個及第三個參數</span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr4</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">removed4</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr4</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;aa&#39;</span>);
+
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr4</span>); <span style="color:#75715e">// [ 0, 1, &#39;aa&#39;, 5 ]
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">removed4</span>); <span style="color:#75715e">// [2, 3, 4]
+</span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>字串</p>
+<ul>
+<li>
+<p>String.prototype.slice()</p>
+<p>會改變原始字串：不會</p>
+<p>是否有 return：有！</p>
+<p>會回傳一個指定索引範圍字元的新字串</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#a6e22e">beginIndex</span>[, <span style="color:#a6e22e">endIndex</span>])
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;The quick brown fox jumps over the lazy dog.&#39;</span>
+
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">31</span>)); <span style="color:#75715e">// &#39;the lazy dog.&#39;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>) <span style="color:#75715e">// &#39;The quick brown fox jumps over the lazy dog.&#39;
+</span></code></pre></div></li>
+<li>
+<p>String.prototype.split()</p>
+<p>會改變原始字串：不會</p>
+<p>是否有 return：有！</p>
+<p>會依照指定規則分割字串，並回傳一個陣列，內容為拆分的字串</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">split</span>([<span style="color:#a6e22e">separator</span>[, <span style="color:#a6e22e">limit</span>]])
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">monthString</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec&#39;</span>;
+
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">monthString</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;,&#39;</span>) );
+<span style="color:#75715e">// [ &#39;Jan&#39;, &#39;Feb&#39;, &#39;Mar&#39;, &#39;Apr&#39;, &#39;May&#39;, &#39;Jun&#39;, &#39;Jul&#39;, &#39;Aug&#39;, &#39;Sep&#39;, &#39;Oct&#39;, &#39;Nov&#39;, &#39;Dec&#39; ]
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00000000&#39;</span>;
+
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">num</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#ae81ff">2</span>) ); <span style="color:#75715e">// [ &#39;0&#39;, &#39;0&#39; ]
+</span></code></pre></div></li>
+</ul>
+</li>
+</ol>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">標籤</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://elvis1056.github.io/tags/slice/">slice</a>
+
+  <a class="tag tag--primary tag--small" href="https://elvis1056.github.io/tags/splice/">splice</a>
+
+  <a class="tag tag--primary tag--small" href="https://elvis1056.github.io/tags/split/">split</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="分享這個帖子">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://elvis1056.github.io/2021/09/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90/" title="分享到 Facebook" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://elvis1056.github.io/2021/09/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90/" title="分享到 Twitter" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://elvis1056.github.io/2021/09/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="發表評論">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="回到頂部">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/elvis1056.github.io\/2021\/09\/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90\/';
+        
+          this.page.identifier = '\/2021\/09\/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          
+          document.getElementById('disqus_thread').innerHTML = '';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 elvis1056 程式治療. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="分享這個帖子">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://elvis1056.github.io/2021/09/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90/" title="分享到 Facebook" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://elvis1056.github.io/2021/09/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90/" title="分享到 Twitter" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://elvis1056.github.io/2021/09/2021-09-14-slicesplicesplit-%E8%A9%B3%E7%B4%B0%E8%A7%A3%E6%9E%90/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="發表評論">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="回到頂部">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Felvis1056.github.io%2F2021%2F09%2F2021-09-14-slicesplicesplit-%25E8%25A9%25B3%25E7%25B4%25B0%25E8%25A7%25A3%25E6%259E%2590%2F" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Felvis1056.github.io%2F2021%2F09%2F2021-09-14-slicesplicesplit-%25E8%25A9%25B3%25E7%25B4%25B0%25E8%25A7%25A3%25E6%259E%2590%2F" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Felvis1056.github.io%2F2021%2F09%2F2021-09-14-slicesplicesplit-%25E8%25A9%25B3%25E7%25B4%25B0%25E8%25A7%25A3%25E6%259E%2590%2F" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>分享到 Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://elvis1056.github.io/images/picture.jpg" alt="作者的圖片" />
+    
+    <h4 id="about-card-name">elvis1056 程式治療</h4>
+    
+      <div id="about-card-bio">紀錄每件事物，世界很大盡力去學習 Software Engineer. Web Developer keep going Front-end</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Front-end player
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Taipei
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://elvis1056.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://elvis1056.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
