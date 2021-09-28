@@ -308,12 +308,65 @@
 <li>需要自己找到可以部署的地方</li>
 </ul>
 <h2 id="安裝-hugo">安裝 Hugo</h2>
-<h3 id="前置作業">前置作業</h3>
+<h3 id="前置作業--安裝--選擇主題--設定-">前置作業 ( 安裝 + 選擇主題 + 設定 )</h3>
+<h4 id="安裝">安裝</h4>
 <ul>
-<li>安裝 git</li>
+<li>安裝 git ( 選擇性，假使你要推你的專案在安裝 )</li>
 <li>安裝 golang</li>
 <li>安裝 hugo</li>
 </ul>
+<p>Mac 安裝範例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">brew install go
+brew install hugo
+</code></pre></div><p>安裝完成後</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">hugo version // 檢查 hugo 安裝版本
+go version // 檢查 go 安裝版本
+</code></pre></div><h4 id="建立專案">建立專案</h4>
+<p>選一個地方建出你的專案資料夾 ( 跟目錄、桌面等等&hellip; )</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">hugo new site quickstart // 這個名稱都可以自定義這裡使用官網範例，quickstart
+</code></pre></div><h4 id="選擇主題">選擇主題</h4>
+<p><a href="https://themes.gohugo.io/">點此官網挑選主題</a></p>
+<p>有了專案後，下載主題放至你的專案資料夾裡
+讓你直接專注在寫文章</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://github.com/kakawait/hugo-tranquilpeak-theme.git themes/tranquilpeak
+<span style="color:#f92672">(</span> 我要把專案從 github 上複製一份到我的資料夾 themes/tranquilpeak 這裡，沒有的話幫我建立資料夾 <span style="color:#f92672">)</span>
+</code></pre></div><h4 id="設定">設定</h4>
+<p>編輯專案中 config.toml，開啟這個檔案後加入 theme=&ldquo;tranquilpeak&rdquo;
+這邊放一下我的設定檔案</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">baseURL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://elvis1056.github.io/&#34;</span>
+languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zh-tw&#34;</span>
+defaultContentLanguage <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zh-tw&#34;</span>
+title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;elvis1056 部落格 - 程式治療&#34;</span>
+theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;tranquilpeak&#34;</span>
+</code></pre></div><h4 id="準備就緒啟動">準備就緒啟動</h4>
+<p>啟動他，看看主題有沒有正確顯示
+當然這時候沒有文章</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">hugo server
+</code></pre></div><h3 id="新增文章">新增文章</h3>
+<p>這邊有對文章做分類
+所以才會有 post 出現
+你也可以直接新增一個 .md 檔案</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">hugo new post/hello-hugo.md
+</code></pre></div><p>注意：.md 的文章都要放在 content 這個資料夾中 ( 這個專案是這樣，如果有別的狀況請自行調整 )</p>
+<h3 id="產出靜態檔案">產出靜態檔案</h3>
+<p>hugo 告訴我，是個需要編譯來產生靜態檔案
+來吧下指令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">hugo <span style="color:#f92672">(</span> 後面要接參數自己到官網找進階用法 <span style="color:#f92672">)</span>
+</code></pre></div><p>產出的檔案都會放在 public 這個資料夾中</p>
+<h3 id="git-與-github-新增-repository-來部署你的文章">git 與 github 新增 repository 來部署你的文章</h3>
+<ul>
+<li>在 Github 中新增你的 repository ( 我的專案名稱叫：elvis1056.github.io，看你想要叫什麼都可以)</li>
+<li>到 public 資料夾中新增 git repository 與 github 做連結</li>
+</ul>
+<h3 id="透過-github-來產生一組你專案的網址">透過 github 來產生一組你專案的網址</h3>
+<ol>
+<li>在 github 上選擇你新增的 repository</li>
+<li>選擇 Setting</li>
+<li>左方選單中選擇 Pages</li>
+<li>右方 source 中選擇 / (root)，儲存 Save</li>
+<li>儲存後至上方顯示的連結Your site is published at <a href="https://elvis1056.github.io/">https://elvis1056.github.io/</a></li>
+<li>檢視畫面，大功告成</li>
+</ol>
               
 
 
