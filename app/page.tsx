@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <main style={{ padding: '2rem' }}>
-      <h1>aye1234 電商</h1>
+      <h1>5dpapa 電商</h1>
       <h2>熱門商品</h2>
       <ProductList products={products} />
     </main>
