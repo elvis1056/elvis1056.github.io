@@ -1,0 +1,26 @@
+<svg viewBox="20 25 160 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 中心房子圖標（線條變細） -->
+  <g transform="translate(100, 95)">
+    <!-- 屋頂 -->
+    <path d="M -28 -5 L 0 -30 L 28 -5"
+          stroke="#5fb8d6"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- 房子主體 - 圓角底部 -->
+    <path d="M -25 -5 L -25 25 Q -25 32 -18 32 L 18 32 Q 25 32 25 25 L 25 -5"
+          stroke="#5fb8d6"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+
+  <!-- 環繞文字 - 上方 -->
+  <path id="topCurve" d="M 45 95 A 55 55 0 0 1 155 95" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#5fb8d6" letter-spacing="6">
+    <textPath href="#topCurve" startOffset="50%" text-anchor="middle">
+      5 D P A P A
+    </textPath>
+  </text>
+</svg>

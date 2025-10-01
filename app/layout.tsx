@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { Navbar } from '@/components/Navbar';
+
 import { QueryProvider } from './query-provider';
 import './globals.css';
 
@@ -16,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="zh-TW">
       <body>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <Navbar />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );
