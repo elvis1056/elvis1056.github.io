@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { theme } from '@/constants/theme';
+
 const logoStyles = css`
   .logo-wrapper {
     position: relative;
@@ -23,7 +25,7 @@ const logoStyles = css`
     transition: opacity 0.3s ease-in-out;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.breakpoints.tablet}) {
     .logo-wrapper {
       width: 40px;
       height: 28px;
