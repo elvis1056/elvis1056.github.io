@@ -1,19 +1,35 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 import { fetchProducts } from '@/lib/api/products';
+import type { Product } from '@/types';
 
 import { ProductList } from './product-list';
 
-// 強制動態渲染（不要靜態生成）
-export const dynamic = 'force-dynamic';
+export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default async function Home() {
-  // 在伺服器端抓取資料
-  const products = await fetchProducts();
+  useEffect(() => {
+    fetchProducts()
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch products:', error);
+        setProducts([]);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <main style={{ padding: '2rem' }}>
       <h1>5dpapa 電商</h1>
       <h2>熱門商品</h2>
-      <ProductList products={products} />
+      {loading ? <p>載入中...</p> : <ProductList products={products} />}
     </main>
   );
 }
