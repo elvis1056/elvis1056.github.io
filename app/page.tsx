@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+import Banner from '@/components/Banner';
 import { fetchProducts } from '@/lib/api/products';
 import type { Product } from '@/types';
 
@@ -26,10 +27,13 @@ export default function Home() {
   }, []);
 
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1>5dpapa 電商</h1>
-      <h2>熱門商品</h2>
-      {loading ? <p>載入中...</p> : <ProductList products={products} />}
+    <main>
+      <Banner />
+      <div style={{ padding: '2rem' }}>
+        <h1>5dpapa 電商</h1>
+        <h2>熱門商品</h2>
+        {loading ? <p>載入中...</p> : <ProductList products={products} />}
+      </div>
     </main>
   );
 }
