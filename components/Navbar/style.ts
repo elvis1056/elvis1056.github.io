@@ -1,13 +1,15 @@
 import styled, { css } from 'styled-components';
 
+import { theme } from '@/constants/theme';
+
 const navStyles = css`
   .navbar {
-    background-color: #fefefe;
-    border-bottom: 1px solid #e8f4f8;
+    background-color: ${theme.colors.background.default};
+    border-bottom: 1px solid ${theme.colors.border.light};
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(160, 216, 241, 0.08);
+    box-shadow: ${theme.shadows.md};
   }
 
   .container {
@@ -33,9 +35,9 @@ const navStyles = css`
   }
 
   .logo-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #5fb8d6;
+    font-size: ${theme.typography.fontSize['2xl']};
+    font-weight: ${theme.typography.fontWeight.bold};
+    color: ${theme.colors.primary.main};
     letter-spacing: 0.5px;
   }
 
@@ -50,23 +52,23 @@ const navStyles = css`
   .nav-link {
     display: block;
     text-decoration: none;
-    color: #7a9ca5;
-    font-weight: 500;
-    font-size: 1rem;
+    color: ${theme.colors.secondary.main};
+    font-weight: ${theme.typography.fontWeight.medium};
+    font-size: ${theme.typography.fontSize.base};
     padding: 0.625rem 1.25rem;
     border-radius: 0.5rem;
     transition: all 0.2s ease;
   }
 
   .nav-link:hover {
-    color: #5fb8d6;
-    background-color: #f0f9fc;
+    color: ${theme.colors.primary.main};
+    background-color: ${theme.colors.primary[50]};
   }
 
   .nav-link.active {
-    color: #5fb8d6;
-    background-color: #e8f4f8;
-    font-weight: 600;
+    color: ${theme.colors.primary.main};
+    background-color: ${theme.colors.primary[100]};
+    font-weight: ${theme.typography.fontWeight.semibold};
   }
 
   .mobile-menu-button {
@@ -87,16 +89,16 @@ const navStyles = css`
   .hamburger span {
     display: block;
     height: 2px;
-    background-color: #5fb8d6;
+    background-color: ${theme.colors.primary.main};
     border-radius: 2px;
     transition: all 0.3s ease;
   }
 
   .mobile-menu {
     display: none;
-    background-color: #fefefe;
-    border-top: 1px solid #e8f4f8;
-    box-shadow: 0 4px 12px rgba(160, 216, 241, 0.1);
+    background-color: ${theme.colors.background.default};
+    border-top: 1px solid ${theme.colors.border.light};
+    box-shadow: ${theme.shadows.lg};
   }
 
   .mobile-nav-links {
@@ -108,26 +110,26 @@ const navStyles = css`
   .mobile-nav-link {
     display: block;
     text-decoration: none;
-    color: #7a9ca5;
-    font-weight: 500;
-    font-size: 1rem;
+    color: ${theme.colors.secondary.main};
+    font-weight: ${theme.typography.fontWeight.medium};
+    font-size: ${theme.typography.fontSize.base};
     padding: 0.875rem 1rem;
     border-radius: 0.5rem;
     transition: all 0.2s ease;
   }
 
   .mobile-nav-link:hover {
-    color: #5fb8d6;
-    background-color: #f0f9fc;
+    color: ${theme.colors.primary.main};
+    background-color: ${theme.colors.primary[50]};
   }
 
   .mobile-nav-link.active {
-    color: #5fb8d6;
-    background-color: #e8f4f8;
-    font-weight: 600;
+    color: ${theme.colors.primary.main};
+    background-color: ${theme.colors.primary[100]};
+    font-weight: ${theme.typography.fontWeight.semibold};
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.breakpoints.tablet}) {
     .container {
       padding: 0 1.5rem;
     }
@@ -145,18 +147,18 @@ const navStyles = css`
     }
 
     .logo-text {
-      font-size: 1.25rem;
+      font-size: ${theme.typography.fontSize.xl};
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: ${theme.breakpoints.mobile}) {
     .container {
       padding: 0 1rem;
       height: 56px;
     }
 
     .logo-text {
-      font-size: 1.125rem;
+      font-size: ${theme.typography.fontSize.lg};
     }
 
     .mobile-nav-links {
