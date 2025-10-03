@@ -1,0 +1,70 @@
+export const skillsData = {
+  title: '技能與工具',
+  categories: [
+    {
+      title: 'HTML5 & CSS3',
+      icon: '🎨',
+      skills: [
+        { name: '語用語意化標籤' },
+        { name: 'RWD 響應式網站規劃' },
+        { name: '善用整合三方庫' },
+        { name: 'Material / Fluent' },
+        { name: 'Bootstrap / Tailwind' },
+        { name: 'CSS 一致性 駝峰 BEM命名' },
+        { name: 'Icon + 字型檔整合' },
+        { name: 'Sass / SCSS + css module' },
+        { name: 'Flexbox、Grid system' },
+      ],
+    },
+    {
+      title: 'JavaScript',
+      icon: '⚡',
+      skills: [
+        { name: 'React Hook ( ^17.0.2 )' },
+        { name: 'Redux Toolkit' },
+        { name: 'Vanilla JS & ( ES6 + )' },
+        { name: 'jQuery' },
+        { name: 'RESTful API' },
+        { name: 'AJAX / Fetch / axios' },
+      ],
+    },
+    {
+      title: '其他',
+      icon: '🛠️',
+      skills: [
+        { name: 'Git 指令版本控制' },
+        { name: 'npm / yarn' },
+        { name: 'Node.js + Express' },
+        { name: 'ORM - Sequelize' },
+        { name: 'Gulp' },
+        { name: 'Webpack' },
+        { name: 'PHP' },
+        { name: 'MySQL' },
+        { name: 'AWS' },
+        { name: 'Docker' },
+        { name: 'Nginx' },
+        { name: 'PHP 留言功能防範 XSS & SQL Injection' },
+      ],
+    },
+    {
+      title: '團隊規範',
+      icon: '👥',
+      skills: [
+        { name: '建立必要前端團隊規範' },
+        { name: '整合代碼' },
+        { name: '區塊版位架構設計' },
+        { name: '系統架構 - 代碼重構' },
+      ],
+    },
+    {
+      title: '其他工具',
+      icon: '🔧',
+      skills: [
+        { name: 'Asana 管理工作' },
+        { name: 'BitBucket 托管平台' },
+        { name: 'ClickUp 單位間平行溝通' },
+        { name: 'Cloudflare 託管平台' },
+      ],
+    },
+  ],
+};
