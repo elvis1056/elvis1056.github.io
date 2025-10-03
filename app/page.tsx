@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 
 import Banner from '@/components/Banner';
+import SkillsSection from '@/components/SkillsSection';
+import { skillsData } from '@/constants/skills';
 import { fetchProducts } from '@/lib/api/products';
 import type { Product } from '@/types';
 
@@ -29,6 +31,7 @@ export default function Home() {
   return (
     <main>
       <Banner />
+      <SkillsSection title={skillsData.title} categories={skillsData.categories} />
       <div style={{ padding: '2rem' }}>
         <h1>5dpapa 電商</h1>
         <h2>熱門商品</h2>
