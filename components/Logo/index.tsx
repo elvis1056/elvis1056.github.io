@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 
+import { assetPath } from '@/lib/utils/asset-path';
+
 import { LogoWrapper } from './style';
 
 export function Logo() {
@@ -9,11 +11,16 @@ export function Logo() {
     <LogoWrapper>
       <div className="logo-wrapper">
         <div className="desktop-logo">
-          <Image src="/logo.svg" alt="5dpapa Logo" width={58} height={40} />
+          <Image
+            src={assetPath('/logo.svg')}
+            alt="5dpapa Logo"
+            width={58}
+            height={40}
+          />
         </div>
         <div className="mobile-logo">
           <Image
-            src="/logo-mobile.svg"
+            src={assetPath('/logo-mobile.svg')}
             alt="5dpapa Logo"
             width={40}
             height={28}

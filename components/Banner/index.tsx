@@ -8,32 +8,34 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+import { assetPath } from '@/lib/utils/asset-path';
+
 import style from './style';
 
 const bannerImages = [
   {
     id: 1,
-    src: '/images/banner-1.svg',
+    src: assetPath('/images/banner-1.svg'),
     alt: 'Banner 1',
   },
   {
     id: 2,
-    src: '/images/banner-2.svg',
+    src: assetPath('/images/banner-2.svg'),
     alt: 'Banner 2',
   },
   {
     id: 3,
-    src: '/images/banner-3.svg',
+    src: assetPath('/images/banner-3.svg'),
     alt: 'Banner 3',
   },
   {
     id: 4,
-    src: '/images/banner-4.svg',
+    src: assetPath('/images/banner-4.svg'),
     alt: 'Banner 4',
   },
   {
     id: 5,
-    src: '/images/banner-5.svg',
+    src: assetPath('/images/banner-5.svg'),
     alt: 'Banner 5',
   },
 ];
