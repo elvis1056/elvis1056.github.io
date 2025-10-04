@@ -36,9 +36,18 @@ function Clock({ className }: ClockProps) {
         <div className="clock-container">
           <div className="clock-face">
             <div className="clock-center" />
-            <div className="clock-hand hour-hand" style={{ transform: 'rotate(0deg)' }} />
-            <div className="clock-hand minute-hand" style={{ transform: 'rotate(0deg)' }} />
-            <div className="clock-hand second-hand" style={{ transform: 'rotate(0deg)' }} />
+            <div
+              className="clock-hand hour-hand"
+              style={{ transform: 'rotate(0deg)' }}
+            />
+            <div
+              className="clock-hand minute-hand"
+              style={{ transform: 'rotate(0deg)' }}
+            />
+            <div
+              className="clock-hand second-hand"
+              style={{ transform: 'rotate(0deg)' }}
+            />
           </div>
         </div>
       </div>
