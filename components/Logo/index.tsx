@@ -12,7 +12,12 @@ export function Logo() {
           <Image src="/logo.svg" alt="5dpapa Logo" width={58} height={40} />
         </div>
         <div className="mobile-logo">
-          <Image src="/logo-mobile.svg" alt="5dpapa Logo" width={40} height={28} />
+          <Image
+            src="/logo-mobile.svg"
+            alt="5dpapa Logo"
+            width={40}
+            height={28}
+          />
         </div>
       </div>
     </LogoWrapper>

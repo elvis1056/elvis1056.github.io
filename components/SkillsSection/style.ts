@@ -68,7 +68,7 @@ export default css`
 
   .skill-item {
     font-size: 1rem;
-    color: ${theme.colors.neutral.gray800};
+    color: ${theme.colors.neutral.gray700};
     line-height: 1.6;
     padding: 0.25rem 0;
   }
