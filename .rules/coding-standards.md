@@ -23,11 +23,69 @@
 - `app/`: 頁面也要用 styled-components，不用 inline style
 - 保持程式碼風格一致性
 
-### 5. Commit 拆分原則
+### 5. Commit 訊息規範（Conventional Commits v1.0.0）
+
+> 參考來源：
+> - [Conventional Commits 官方規範](https://www.conventionalcommits.org/en/v1.0.0/) (7.8k⭐)
+> - [Conventional Commits Cheatsheet](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13) (最受歡迎的參考指南)
+> - Angular Commit Guidelines (業界最早且廣泛採用的規範)
+
+#### 格式結構
+```
+<type>(<optional scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+#### Type 類別（必填）
+- `feat:` 新增功能（對應 MINOR 版本）
+- `fix:` 修補 bug（對應 PATCH 版本）
+- `refactor:` 重構（不改變行為的程式碼重整）
+- `perf:` 效能改善（refactor 的子類別）
+- `style:` 程式碼格式（空格、分號等，不影響功能）
+- `test:` 測試相關
+- `docs:` 文件變更
+- `build:` 建置系統或相依性變更
+- `ci:` CI 設定檔變更
+- `ops:` 維運相關（部署、基礎設施）
+- `chore:` 其他雜項（最後選擇）
+
+#### Scope 範圍（選填）
+- 用括號標註影響範圍，如 `feat(shop): 新增商品篩選`
+- 範例：`fix(navbar): 修正手機版選單顯示`
+
+#### Description 描述規則
+- 使用祈使句、現在式（如：add 而非 added）
+- 不要大寫開頭
+- 結尾不加句號
+- 保持簡潔
+
+#### Breaking Changes（重大變更）
+- 在 type/scope 後加 `!`，如 `feat(api)!: 移除 status endpoint`
+- 或在 footer 使用 `BREAKING CHANGE:` 描述變更
+- 對應 MAJOR 版本更新
+
+#### Commit 拆分原則
 - 一個 commit 只做一件事
 - 超過 3-4 個檔案就考慮拆分
 - 獨立的功能要獨立 commit
-- 使用正確的 commit type：feat/fix/chore/refactor
+
+#### 版本對應（Semantic Versioning）
+- Breaking Changes → MAJOR 版本（如 1.0.0 → 2.0.0）
+- feat → MINOR 版本（如 1.0.0 → 1.1.0）
+- fix, perf, refactor → PATCH 版本（如 1.0.0 → 1.0.1）
+
+#### 正確範例
+```
+feat: 新增郵件通知功能
+feat(shop): 新增商品分類篩選
+fix(cart): 防止空購物車送出訂單
+refactor: 改用遞迴實作費氏數列
+perf(images): 優化圖片載入速度
+docs: 更新 API 文件
+```
 
 ### 6. TypeScript 型別定義
 - 新增欄位時同步更新 TypeScript 型別
