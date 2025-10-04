@@ -16,6 +16,7 @@ export default css`
     width: 100%;
     height: 400px;
     overflow: hidden;
+    padding-bottom: 50px;
   }
 
   .banner-slide {
@@ -25,12 +26,12 @@ export default css`
     background-color: ${theme.colors.neutral.gray200};
   }
 
-  /* Swiper pagination 樣式覆寫 */
-  .swiper-pagination {
-    bottom: 20px !important;
+  /* 用更具體的選擇器提高優先級 */
+  .banner-swiper .swiper-pagination {
+    bottom: 20px;
   }
 
-  .swiper-pagination-bullet {
+  .banner-swiper .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
     background-color: ${theme.colors.neutral.white};
@@ -38,7 +39,7 @@ export default css`
     transition: all 0.3s ease;
   }
 
-  .swiper-pagination-bullet-active {
+  .banner-swiper .swiper-pagination-bullet-active {
     opacity: 1;
     background-color: ${theme.colors.primary.main};
     transform: scale(1.2);
