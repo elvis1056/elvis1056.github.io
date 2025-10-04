@@ -2,7 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export',
-  // basePath: '/5dpapa',  // 部署時才需要
+  basePath: '/5dpapa',
   compiler: {
     styledComponents: true,
   },
