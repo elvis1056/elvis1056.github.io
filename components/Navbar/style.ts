@@ -41,12 +41,23 @@ const navStyles = css`
     letter-spacing: 0.5px;
   }
 
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
   .nav-links {
     display: flex;
     gap: 1rem;
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  .nav-clock {
+    display: flex;
+    align-items: center;
   }
 
   .nav-link {
@@ -134,7 +145,7 @@ const navStyles = css`
       padding: 0 1.5rem;
     }
 
-    .nav-links {
+    .nav-right {
       display: none;
     }
 

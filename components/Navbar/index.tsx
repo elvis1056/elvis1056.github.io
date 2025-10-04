@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
+import Clock from '../Clock';
 import { Logo } from '../Logo';
+
 import { NavWrapper } from './style';
 
 export function Navbar() {
@@ -13,6 +15,7 @@ export function Navbar() {
 
   const navLinks = [
     { href: '/', label: '首頁' },
+    { href: '/shop', label: '商城' },
     { href: '/blog', label: '部落格' },
   ];
 
@@ -25,21 +28,27 @@ export function Navbar() {
             <span className="logo-text">5dpapa</span>
           </Link>
 
-          <ul className="nav-links">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={`nav-link ${isActive ? 'active' : ''}`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="nav-right">
+            <ul className="nav-links">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={`nav-link ${isActive ? 'active' : ''}`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="nav-clock">
+              <Clock />
+            </div>
+          </div>
 
           <button
             className="mobile-menu-button"
