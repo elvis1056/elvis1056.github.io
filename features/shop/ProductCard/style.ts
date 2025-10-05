@@ -32,6 +32,7 @@ export default css`
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: ${theme.colors.neutral.white};
   }
 
   .image-placeholder {
