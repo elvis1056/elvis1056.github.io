@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import type { Product } from '@/types';
@@ -16,7 +17,16 @@ function ProductCard({ product, className }: ProductCardProps) {
     <article className={className}>
       <div className="card-image-wrapper">
         <div className="card-image">
-          <span className="image-placeholder">🎈</span>
+          {product.imageUrl ? (
+            <Image
+              src={product.imageUrl}
+              alt={product.name}
+              fill
+              style={{ objectFit: 'contain' }}
+            />
+          ) : (
+            <span className="image-placeholder">🎈</span>
+          )}
         </div>
         {product.featured && <span className="badge">熱門</span>}
       </div>
