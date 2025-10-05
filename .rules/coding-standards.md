@@ -71,6 +71,13 @@
 - 一個 commit 只做一件事
 - 超過 3-4 個檔案就考慮拆分
 - 獨立的功能要獨立 commit
+- 不要一次 commit 一大包變更
+
+#### Commit 訊息格式要求
+- 只寫一行簡短描述，不要多行說明
+- 不要加入 Claude Code 產生聲明
+- 不要加入 Co-Authored-By
+- 格式：`type: 簡短描述` 或 `type(scope): 簡短描述`
 
 #### 版本對應（Semantic Versioning）
 - Breaking Changes → MAJOR 版本（如 1.0.0 → 2.0.0）
