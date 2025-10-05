@@ -79,6 +79,11 @@
 - 不要加入 Co-Authored-By
 - 格式：`type: 簡短描述` 或 `type(scope): 簡短描述`
 
+#### Commit 前檢查流程
+- **必須執行** `npm run lint` 確認無錯誤
+- 修正所有 ESLint 和 Prettier 錯誤後才能 commit
+- 不要 commit 後才發現 CI 錯誤
+
 #### 版本對應（Semantic Versioning）
 - Breaking Changes → MAJOR 版本（如 1.0.0 → 2.0.0）
 - feat → MINOR 版本（如 1.0.0 → 1.1.0）
