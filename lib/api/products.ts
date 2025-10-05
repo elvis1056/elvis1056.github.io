@@ -1,6 +1,5 @@
-import type { Product } from '@/types';
-
 import { assetPath } from '@/lib/utils/asset-path';
+import type { Product } from '@/types';
 
 // 🔥 假資料 - 之後改成真實 API
 export async function fetchProducts(): Promise<Product[]> {
@@ -35,7 +34,7 @@ export async function fetchProducts(): Promise<Product[]> {
       price: 15000,
       category: 'corporate',
       imageUrl: assetPath(
-        '/images/products/1070129頂新集團餐飲事業群經營策略會議6.1.jpg',
+        '/images/products/1070129頂新集團餐飲事業群經營策略會議6.1.jpg'
       ),
       createdAt: '2025-01-17T10:00:00Z',
     },
@@ -74,7 +73,7 @@ export async function fetchProducts(): Promise<Product[]> {
       price: 8500,
       category: 'party',
       imageUrl: assetPath(
-        '/images/products/1070210 刺點皮影親子音樂劇--跟著阿嬤去旅行1.1.jpg',
+        '/images/products/1070210 刺點皮影親子音樂劇--跟著阿嬤去旅行1.1.jpg'
       ),
       createdAt: '2025-01-21T10:00:00Z',
     },
