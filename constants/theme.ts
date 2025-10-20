@@ -99,10 +99,21 @@ export const shadows = {
   lg: '0 4px 16px rgba(95, 184, 214, 0.12)',
 } as const;
 
+export const zIndex = {
+  base: 1,
+  dropdown: 10,
+  navbar: 100,
+  mobileMenu: 101,
+  modal: 200,
+  modalBackdrop: 199,
+  notification: 300,
+} as const;
+
 export const theme = {
   colors,
   spacing,
   typography,
   breakpoints,
   shadows,
+  zIndex,
 } as const;
