@@ -18,7 +18,9 @@ export default css`
     right: 0;
     z-index: ${theme.zIndex.navbar};
     box-shadow: ${theme.shadows.md};
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .navbar.menu-open {

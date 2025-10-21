@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import styled from 'styled-components';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import { useAuthStore } from '@/stores/authStore';
 
@@ -142,7 +142,9 @@ function Navbar({ className }: { className?: string }) {
                     {user ? (
                       <>
                         <div className="mobile-user-info">
-                          <span className="mobile-user-name">{user.username}</span>
+                          <span className="mobile-user-name">
+                            {user.username}
+                          </span>
                         </div>
                         <button
                           onClick={() => {

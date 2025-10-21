@@ -2,10 +2,6 @@ import type { AuthResponse, LoginRequest, RegisterRequest } from '@/types';
 
 import { apiClient } from './client';
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ||
-  'https://fivedpapabackend.onrender.com';
-
 /**
  * 登入 API
  */
@@ -44,6 +40,7 @@ export async function refreshAccessToken(
 export function loginWithGoogle() {
   alert('Google 登入功能即將推出 (Coming Soon)');
   // TODO: 後端實作完成後啟用
+  // const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://fivedpapabackend.onrender.com';
   // window.location.href = `${API_BASE_URL}/api/auth/oauth/google`;
 }
 
@@ -54,5 +51,6 @@ export function loginWithGoogle() {
 export function loginWithFacebook() {
   alert('Facebook 登入功能即將推出 (Coming Soon)');
   // TODO: 後端實作完成後啟用
+  // const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://fivedpapabackend.onrender.com';
   // window.location.href = `${API_BASE_URL}/api/auth/oauth/facebook`;
 }
