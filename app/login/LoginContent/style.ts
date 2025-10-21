@@ -3,7 +3,6 @@ import { css } from 'styled-components';
 import { theme } from '@/constants/theme';
 
 export default css`
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
