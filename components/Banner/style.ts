@@ -23,7 +23,6 @@ export default css`
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: ${theme.colors.neutral.gray200};
   }
 
   /* 用更具體的選擇器提高優先級 */
