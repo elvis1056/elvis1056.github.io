@@ -30,7 +30,7 @@ function ProductCard({
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <Link href={`/product/${id}`} className={className}>
+    <Link className={className} href={`/product/${id}`}>
       <div className="card-container">
         {/* 圖片區域 */}
         <div className="image-container">
@@ -40,13 +40,13 @@ function ProductCard({
             </div>
           )}
           <Image
-            src={assetPath(image)}
             alt={title}
-            fill
             className="product-image"
+            fill
             onLoad={() => setImageLoaded(true)}
-            style={{ objectFit: 'contain' }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+            src={assetPath(image)}
+            style={{ objectFit: 'contain' }}
           />
         </div>
 
@@ -59,7 +59,7 @@ function ProductCard({
           {tags.length > 0 && (
             <div className="tags-container">
               {tags.map((tag, index) => (
-                <span key={index} className="tag">
+                <span className="tag" key={index}>
                   {tag}
                 </span>
               ))}

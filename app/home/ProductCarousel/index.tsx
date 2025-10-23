@@ -46,13 +46,6 @@ function ProductCarousel({ className, title, products }: ProductCarouselProps) {
         )}
 
         <Swiper
-          modules={[Navigation]}
-          spaceBetween={24}
-          slidesPerView={3}
-          loop={true}
-          onProgress={(swiper, progress) => {
-            setProcess(progress);
-          }}
           breakpoints={{
             0: {
               slidesPerView: 1,
@@ -68,10 +61,17 @@ function ProductCarousel({ className, title, products }: ProductCarouselProps) {
             },
           }}
           className="product-swiper"
+          loop={true}
+          modules={[Navigation]}
           navigation={{
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
           }}
+          onProgress={(swiper, progress) => {
+            setProcess(progress);
+          }}
+          slidesPerView={3}
+          spaceBetween={24}
         >
           {products.map((product) => (
             <SwiperSlide key={product.id}>
@@ -87,7 +87,7 @@ function ProductCarousel({ className, title, products }: ProductCarouselProps) {
             }
           )}
         >
-          <Arrow direction="left" size={32} color="#000" />
+          <Arrow color="#000" direction="left" size={32} />
         </div>
         <div
           className={classnames(
@@ -98,7 +98,7 @@ function ProductCarousel({ className, title, products }: ProductCarouselProps) {
             }
           )}
         >
-          <Arrow direction="right" size={32} color="#000" />
+          <Arrow color="#000" direction="right" size={32} />
         </div>
       </div>
     </div>

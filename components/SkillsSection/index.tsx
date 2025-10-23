@@ -28,10 +28,10 @@ function SkillsSection({ title, categories, className }: SkillsSectionProps) {
         <h2 className="skills-title">{title}</h2>
         <div className="skills-grid">
           {categories.map((category, index) => (
-            <div key={index} className="skill-category">
+            <div className="skill-category" key={index}>
               <h3 className="category-title">
                 {category.icon && (
-                  <span className="category-icon" aria-label={category.title}>
+                  <span aria-label={category.title} className="category-icon">
                     {category.icon}
                   </span>
                 )}
@@ -39,7 +39,7 @@ function SkillsSection({ title, categories, className }: SkillsSectionProps) {
               </h3>
               <ul className="skill-list">
                 {category.skills.map((skill, skillIndex) => (
-                  <li key={skillIndex} className="skill-item">
+                  <li className="skill-item" key={skillIndex}>
                     {skill.name}
                   </li>
                 ))}

@@ -56,8 +56,8 @@ export default function Home() {
       {/* <Banner /> */}
       <ProductCarousel products={sampleProducts} />
       <SkillsSection
-        title={skillsData.title}
         categories={skillsData.categories}
+        title={skillsData.title}
       />
     </main>
   );

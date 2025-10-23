@@ -53,7 +53,7 @@ function Navbar({ className }: { className?: string }) {
     <header className={className}>
       <div className={`navbar ${isMobileMenuOpen ? 'menu-open' : ''}`}>
         <div className="container">
-          <Link href="/" className="logo-link">
+          <Link className="logo-link" href="/">
             <Logo />
             <span className="logo-text">5dpapa</span>
           </Link>
@@ -65,8 +65,8 @@ function Navbar({ className }: { className?: string }) {
                 return (
                   <li key={link.href}>
                     <Link
-                      href={link.href}
                       className={`nav-link ${isActive ? 'active' : ''}`}
+                      href={link.href}
                     >
                       {link.label}
                     </Link>
@@ -81,12 +81,12 @@ function Navbar({ className }: { className?: string }) {
                   {user ? (
                     <>
                       <span className="user-name">{user.username}</span>
-                      <button onClick={handleLogout} className="logout-btn">
+                      <button className="logout-btn" onClick={handleLogout}>
                         登出
                       </button>
                     </>
                   ) : (
-                    <Link href="/login" className="auth-link">
+                    <Link className="auth-link" href="/login">
                       登入/註冊
                     </Link>
                   )}
@@ -100,9 +100,9 @@ function Navbar({ className }: { className?: string }) {
           </div>
 
           <button
+            aria-label="切換選單"
             className="mobile-menu-button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="切換選單"
           >
             <span className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}>
               <span></span>
@@ -125,8 +125,8 @@ function Navbar({ className }: { className?: string }) {
                   return (
                     <li key={link.href}>
                       <Link
-                        href={link.href}
                         className={`mobile-nav-link ${isActive ? 'active' : ''}`}
+                        href={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {link.label}
@@ -147,19 +147,19 @@ function Navbar({ className }: { className?: string }) {
                           </span>
                         </div>
                         <button
+                          className="mobile-logout-btn"
                           onClick={() => {
                             handleLogout();
                             setIsMobileMenuOpen(false);
                           }}
-                          className="mobile-logout-btn"
                         >
                           登出
                         </button>
                       </>
                     ) : (
                       <Link
-                        href="/login"
                         className="mobile-auth-link"
+                        href="/login"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         登入/註冊

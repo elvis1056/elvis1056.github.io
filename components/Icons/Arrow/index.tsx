@@ -20,19 +20,19 @@ export default function Arrow({
 
   return (
     <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      style={{ transform: `rotate(${rotations[direction]}deg)` }}
       className={className}
+      fill="none"
+      height={size}
+      style={{ transform: `rotate(${rotations[direction]}deg)` }}
+      viewBox="0 0 24 24"
+      width={size}
     >
       <path
         d="M6 9L12 15L18 9"
         stroke={color}
-        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="2"
       />
     </svg>
   );

@@ -8,7 +8,7 @@ interface ShimmerProps {
 
 function Shimmer({ className }: ShimmerProps) {
   return (
-    <div className={className} aria-label="載入中">
+    <div aria-label="載入中" className={className}>
       <div className="shimmer-frame">
         <div className="shimmer" />
       </div>

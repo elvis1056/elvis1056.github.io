@@ -75,28 +75,28 @@ function Banner({ className }: { className?: string }) {
     <div className={className}>
       <div className="banner-container">
         <Swiper
-          modules={[Autoplay, Pagination]}
-          spaceBetween={0}
-          slidesPerView={1}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
           }}
+          className="banner-swiper"
+          loop={true}
+          modules={[Autoplay, Pagination]}
           pagination={{
             clickable: true,
           }}
-          loop={true}
-          className="banner-swiper"
+          slidesPerView={1}
+          spaceBetween={0}
         >
           {bannerImages.map((image) => (
             <SwiperSlide key={image.id}>
               <div className="banner-slide">
                 <Image
-                  src={image.src}
                   alt={image.alt}
                   fill
-                  style={{ objectFit: 'contain' }}
                   priority={image.id === 1}
+                  src={image.src}
+                  style={{ objectFit: 'contain' }}
                 />
               </div>
             </SwiperSlide>

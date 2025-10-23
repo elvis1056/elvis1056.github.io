@@ -83,13 +83,13 @@ function RegisterContent({ className }: RegisterContentProps) {
             </label>
             <input
               id="username"
-              type="text"
-              value={formData.username}
               onChange={(e) =>
                 setFormData({ ...formData, username: e.target.value })
               }
-              required
               placeholder="至少 3 個字元"
+              required
+              type="text"
+              value={formData.username}
             />
           </div>
 
@@ -99,13 +99,13 @@ function RegisterContent({ className }: RegisterContentProps) {
             </label>
             <input
               id="email"
-              type="email"
-              value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
-              required
               placeholder="example@email.com"
+              required
+              type="email"
+              value={formData.email}
             />
           </div>
 
@@ -115,13 +115,13 @@ function RegisterContent({ className }: RegisterContentProps) {
             </label>
             <input
               id="password"
-              type="password"
-              value={formData.password}
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
-              required
               placeholder="至少 6 個字元"
+              required
+              type="password"
+              value={formData.password}
             />
           </div>
 
@@ -131,13 +131,13 @@ function RegisterContent({ className }: RegisterContentProps) {
             </label>
             <input
               id="confirmPassword"
-              type="password"
-              value={formData.confirmPassword}
               onChange={(e) =>
                 setFormData({ ...formData, confirmPassword: e.target.value })
               }
-              required
               placeholder="再次輸入密碼"
+              required
+              type="password"
+              value={formData.confirmPassword}
             />
           </div>
 
@@ -145,12 +145,12 @@ function RegisterContent({ className }: RegisterContentProps) {
             <label htmlFor="fullName">姓名（選填）</label>
             <input
               id="fullName"
-              type="text"
-              value={formData.fullName}
               onChange={(e) =>
                 setFormData({ ...formData, fullName: e.target.value })
               }
               placeholder="您的姓名"
+              type="text"
+              value={formData.fullName}
             />
           </div>
 
@@ -158,23 +158,23 @@ function RegisterContent({ className }: RegisterContentProps) {
             <label htmlFor="phoneNumber">電話（選填）</label>
             <input
               id="phoneNumber"
-              type="tel"
-              value={formData.phoneNumber}
               onChange={(e) =>
                 setFormData({ ...formData, phoneNumber: e.target.value })
               }
               placeholder="0912-345-678"
+              type="tel"
+              value={formData.phoneNumber}
             />
           </div>
 
-          <button type="submit" className="submit-btn" disabled={isLoading}>
+          <button className="submit-btn" disabled={isLoading} type="submit">
             {isLoading ? '註冊中...' : '註冊'}
           </button>
         </form>
 
         <p className="footer-text">
           已經有帳號了？
-          <Link href="/login" className="link">
+          <Link className="link" href="/login">
             立即登入
           </Link>
         </p>

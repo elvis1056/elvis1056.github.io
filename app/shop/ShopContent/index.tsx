@@ -51,8 +51,8 @@ function ShopContent({ className }: ShopContentProps) {
         <div className="shop-layout">
           <aside className="filter-sidebar">
             <ProductFilter
-              selectedCategory={selectedCategory}
               onCategoryChange={setSelectedCategory}
+              selectedCategory={selectedCategory}
             />
           </aside>
 

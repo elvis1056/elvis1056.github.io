@@ -12,18 +12,18 @@ export function Logo() {
       <div className="logo-wrapper">
         <div className="desktop-logo">
           <Image
-            src={assetPath('/logo.svg')}
             alt="5dpapa Logo"
-            width={58}
             height={40}
+            src={assetPath('/logo.svg')}
+            width={58}
           />
         </div>
         <div className="mobile-logo">
           <Image
-            src={assetPath('/logo-mobile.svg')}
             alt="5dpapa Logo"
-            width={40}
             height={28}
+            src={assetPath('/logo-mobile.svg')}
+            width={40}
           />
         </div>
       </div>

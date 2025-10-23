@@ -54,13 +54,13 @@ function LoginContent({ className }: LoginContentProps) {
             <label htmlFor="username">帳號</label>
             <input
               id="username"
-              type="text"
-              value={formData.username}
               onChange={(e) =>
                 setFormData({ ...formData, username: e.target.value })
               }
-              required
               placeholder="請輸入帳號"
+              required
+              type="text"
+              value={formData.username}
             />
           </div>
 
@@ -68,17 +68,17 @@ function LoginContent({ className }: LoginContentProps) {
             <label htmlFor="password">密碼</label>
             <input
               id="password"
-              type="password"
-              value={formData.password}
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
-              required
               placeholder="請輸入密碼"
+              required
+              type="password"
+              value={formData.password}
             />
           </div>
 
-          <button type="submit" className="submit-btn" disabled={isLoading}>
+          <button className="submit-btn" disabled={isLoading} type="submit">
             {isLoading ? '登入中...' : '登入'}
           </button>
         </form>
@@ -89,17 +89,17 @@ function LoginContent({ className }: LoginContentProps) {
 
         <div className="oauth-buttons">
           <button
-            type="button"
             className="oauth-btn google"
             onClick={loginWithGoogle}
+            type="button"
           >
             <span className="oauth-icon">G</span>
             Google 登入
           </button>
           <button
-            type="button"
             className="oauth-btn facebook"
             onClick={loginWithFacebook}
+            type="button"
           >
             <span className="oauth-icon">f</span>
             Facebook 登入
@@ -108,7 +108,7 @@ function LoginContent({ className }: LoginContentProps) {
 
         <p className="footer-text">
           還沒有帳號？
-          <Link href="/register" className="link">
+          <Link className="link" href="/register">
             立即註冊
           </Link>
         </p>
