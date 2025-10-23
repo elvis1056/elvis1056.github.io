@@ -27,6 +27,7 @@
     ],
     "import/newline-after-import": ["error", { "count": 1 }],
     "import/no-duplicates": "error",
+    "react/jsx-sort-props": ["warn", { "ignoreCase": true }],
     "@typescript-eslint/no-unused-vars": [
       "error",
       {

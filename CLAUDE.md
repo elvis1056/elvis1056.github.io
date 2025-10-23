@@ -1,46 +1,4 @@
-## 1. 專案基本資訊
-
-### 專案名稱
-
-- 5dpapa
-
-### 專案類型
-
-- 電商網站兼部落格系統
-
-## 2. 技術棧選擇
-
-### 前端框架
-
-- Next.js (只要使用到前端與SSR，後端另外建立不要包含在一起)
-
-### 前端 UI 框架
-
-- Material-UI (MUI)
-  - 先套用這套框架，但保留自己修改成為自己樣式的空間，可以隨時抽離這個UI
-
-### 後端技術
-
-- Java + Spring Boot
-  - 但我目前對於後端不認識，需要你支援我告訴我問題
-  - 選擇 github 很多人使用且有在維護的熱門版本
-
-### 資料庫
-
-- PostgreSQL
-  - 但我目前對於資料庫不認識，需要你支援我告訴我問題
-
-### 部署平台
-
-- 目前並沒有合適的地方，如果能免費最好，可以先架在 Github 上
-
-## 3. 核心功能
-
-- 希望能有一個賣東西的首頁展示
-- 有部落格可以寫文章
-- 希望圖片在不失真的情況下可以被壓縮讓展示更快速
-
-## 4. 規則
+# 5dpapa 專案規範
 
 ## 📚 LESSONS LEARNED FROM PRODUCTION PROJECTS
 
@@ -72,15 +30,17 @@ This template incorporates best practices from enterprise-grade projects:
 
 This file provides essential guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+---
+
 ## 🚨 CRITICAL RULES - READ FIRST
 
-> **⚠️ RULE ADHERENCE SYSTEM ACTIVE ⚠️**  
-> **Claude Code must explicitly acknowledge these rules at task start**  
+> **⚠️ RULE ADHERENCE SYSTEM ACTIVE ⚠️**
+> **Claude Code must explicitly acknowledge these rules at task start**
 > **These rules override all other instructions and must ALWAYS be followed:**
 
 ### 🔄 **RULE ACKNOWLEDGMENT REQUIRED**
 
-> **Before starting ANY task, Claude Code must respond with:**  
+> **Before starting ANY task, Claude Code must respond with:**
 > "✅ CRITICAL RULES ACKNOWLEDGED - I will follow all prohibitions and requirements listed in CLAUDE.md"
 
 ### ❌ ABSOLUTE PROHIBITIONS
@@ -114,20 +74,129 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
 
 > **STOP: Before starting any task, Claude Code must explicitly verify ALL points:**
 
-### 額外補充
+---
 
-資料夾用途與規範
+## 資料夾結構與規範
 
-| 資料夾        | 用途                                                              | 注意事項                             |
-| ------------- | ----------------------------------------------------------------- | ------------------------------------ |
-| `app/`        | 所有頁面與路由，包含 page.tsx、layout.tsx、loading.tsx、error.tsx | 避免放非 UI 邏輯                     |
-| `components/` | 與任何特定頁面無關的可重用元件                                    | 僅負責 UI 呈現                       |
-| `features/`   | 依功能 (domain) 拆分的模組，包含元件、hook、service               | 可包含 API call、狀態管理            |
-| `lib/`        | 工具、外部整合（API wrappers、helper function）                   | 純函式，不含 UI                      |
-| `hooks/`      | 自訂 React hook                                                   | 命名以 `use` 開頭                    |
-| `context/`    | 全局狀態，React Context Provider                                  | 一般放在根 layout 包裝               |
-| `constants/`  | 常數值、設定檔                                                    | 避免 magic number                    |
-| `types/`      | TypeScript 型別定義                                               | 集中管理                             |
-| `utils/`      | 純工具函式                                                        | 保持無副作用                         |
-| `styles/`     | 全域 CSS                                                          | 優先使用模組化 CSS                   |
-| `public`      | 靜態資源                                                          | 靜態資源：圖片、favicon、robots.txt… |
+| 資料夾        | 用途                                                              | 注意事項                         |
+| ------------- | ----------------------------------------------------------------- | -------------------------------- |
+| `app/`        | 所有頁面與路由，包含 page.tsx、layout.tsx、loading.tsx、error.tsx | 避免放非 UI 邏輯                 |
+| `components/` | 純 UI 可重用元件（Button、Shimmer、Icons）                        | 僅負責 UI 呈現，無業務邏輯       |
+| `features/`   | 依業務領域拆分（product、blog、cart）                             | 可包含元件、hooks、services、API |
+| `lib/`        | 工具、外部整合（API wrappers、helper function）                   | 純函式，不含 UI                  |
+| `hooks/`      | 自訂 React hook                                                   | 命名以 `use` 開頭                |
+| `stores/`     | Zustand 狀態管理                                                  | 全局狀態（如 authStore）         |
+| `constants/`  | 常數值、設定檔（theme.ts、skills.ts）                             | 避免 magic number                |
+| `types/`      | TypeScript 型別定義                                               | 集中管理                         |
+| `utils/`      | 純工具函式                                                        | 保持無副作用                     |
+| `public/`     | 靜態資源                                                          | 圖片、favicon、robots.txt        |
+
+### 特殊規範
+
+- `app/home/` - 首頁專屬元件（如 ProductCarousel）
+- `components/Icons/` - Icon 元件系統，可擴展
+
+---
+
+## 程式碼規範
+
+### CSS / Styled-components
+
+1. **巢狀層級符合 HTML 結構**
+
+   ```typescript
+   .navbar {
+     .container {
+       .logo-link {
+         .logo-text { }
+       }
+     }
+   }
+   ```
+
+2. **使用 theme 變數**
+
+   ```typescript
+   color: ${theme.colors.primary.main};
+   padding: ${theme.spacing.md};
+   font-size: ${theme.typography.fontSize.base};
+   ```
+
+3. **檔案結構**
+   ```
+   ComponentName/
+     index.tsx    # 元件邏輯
+     style.ts     # 樣式定義（使用 css`` 從 styled-components）
+   ```
+
+### TypeScript
+
+1. **Interface 命名**
+
+   ```typescript
+   interface ComponentNameProps {} // Props 加後綴
+   ```
+
+2. **未使用參數**
+   ```typescript
+   function Component({ used, _unused }: Props) {} // 底線前綴
+   ```
+
+### Import 順序（遵循 ESLint import/order）
+
+```typescript
+// 1. React 相關
+import { useState } from 'react';
+
+// 2. 第三方套件
+import styled from 'styled-components';
+
+// 3. CSS imports
+import 'swiper/css';
+
+// 4. 絕對路徑引入（@/）
+import { theme } from '@/constants/theme';
+
+// 5. 相對路徑引入（同層級）
+import ProductCard from './ProductCard';
+import style from './style';
+```
+
+### Commit 規範
+
+```bash
+feat: 新功能
+fix: 修正錯誤
+style: 樣式調整
+refactor: 重構
+chore: 雜項（套件更新）
+docs: 文件更新
+```
+
+**Commit 前必須執行**：
+
+```bash
+npm run lint
+```
+
+---
+
+## 核心原則
+
+### 程式碼品質
+
+- ✅ 搜尋後再建立，避免重複
+- ✅ 單一真相來源
+- ✅ CSS 巢狀層級符合 HTML
+
+### 檔案組織
+
+- ✅ components/ 通用的 UI
+- ✅ features/ 放業務邏輯
+- ✅ 避免根目錄檔案
+
+### 開發流程
+
+- ✅ Edit 前先 Read
+- ✅ 完成功能後立即 Lint
+- ✅ Lint 後再 commit
