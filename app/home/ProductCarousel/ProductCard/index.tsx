@@ -24,7 +24,7 @@ function ProductCard({
   id,
   title,
   image,
-  subtitle,
+  subtitle: _subtitle,
   tags = [],
 }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
