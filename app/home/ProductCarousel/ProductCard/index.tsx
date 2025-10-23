@@ -22,9 +22,9 @@ interface ProductCardProps {
 function ProductCard({
   className,
   id,
-  title,
+  title: _title,
   image,
-  subtitle,
+  subtitle: _subtitle,
   tags = [],
 }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);

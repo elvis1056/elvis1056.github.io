@@ -11,7 +11,6 @@ import 'swiper/css';
 import Arrow from '@/components/Icons/Arrow';
 
 import ProductCard from './ProductCard';
-
 import style from './style';
 
 interface Product {
