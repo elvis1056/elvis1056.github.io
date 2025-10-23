@@ -5,7 +5,7 @@ import { theme } from '@/constants/theme';
 export default css`
   width: 100%;
   padding: 4rem 2rem;
-  background-color: ${theme.colors.neutral.white};
+  background-color: ${theme.colors.background.paper};
 
   .skills-container {
     max-width: 1200px;
@@ -16,7 +16,7 @@ export default css`
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 3rem;
-    color: ${theme.colors.neutral.gray900};
+    color: ${theme.colors.primary.dark};
     text-align: left;
   }
 
@@ -30,14 +30,25 @@ export default css`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    background-color: ${theme.colors.background.default};
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid ${theme.colors.border.light};
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: ${theme.colors.primary.light};
+      box-shadow: ${theme.shadows.md};
+      transform: translateY(-2px);
+    }
   }
 
   .category-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: ${theme.colors.neutral.gray900};
+    color: ${theme.colors.primary.main};
     padding-bottom: 0.75rem;
-    border-bottom: 3px solid ${theme.colors.neutral.gray300};
+    border-bottom: 3px solid ${theme.colors.primary.light};
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
@@ -52,7 +63,8 @@ export default css`
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    background-color: ${theme.colors.neutral.gray100};
+    background-color: ${theme.colors.primary[50]};
+    color: ${theme.colors.primary.main};
     border-radius: 6px;
     padding: 0.25rem;
   }
@@ -68,9 +80,19 @@ export default css`
 
   .skill-item {
     font-size: 1rem;
-    color: ${theme.colors.neutral.gray700};
+    color: ${theme.colors.text.secondary};
     line-height: 1.6;
     padding: 0.25rem 0;
+    position: relative;
+    padding-left: 1.25rem;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: ${theme.colors.secondary.main};
+      font-weight: bold;
+    }
   }
 
   /* Tablet */
