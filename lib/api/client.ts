@@ -1,3 +1,4 @@
+import { csrfManager } from '@/lib/security/csrfManager';
 import { useAuthStore } from '@/stores/authStore';
 
 const API_BASE_URL =
@@ -6,6 +7,7 @@ const API_BASE_URL =
 
 interface RequestConfig extends RequestInit {
   requiresAuth?: boolean;
+  skipCsrf?: boolean; // Skip CSRF token for public endpoints (login, register)
 }
 
 /**
@@ -20,7 +22,7 @@ class ApiClient {
 
   /**
    * Request interceptor
-   * 在發送請求前處理 headers、token 等
+   * 在發送請求前處理 headers、token、CSRF 等
    */
   private async beforeRequest(
     url: string,
@@ -41,12 +43,29 @@ class ApiClient {
       }
     }
 
+    // 對於需要 CSRF token 的請求（POST, PUT, DELETE, PATCH），加上 CSRF token
+    const method = (config.method || 'GET').toUpperCase();
+    const needsCsrf = ['POST', 'PUT', 'DELETE', 'PATCH'].includes(method);
+    const skipCsrf = config.skipCsrf || false;
+
+    if (needsCsrf && !skipCsrf) {
+      try {
+        const csrfToken = await csrfManager.getToken();
+        headers.set('X-XSRF-TOKEN', csrfToken);
+      } catch (error) {
+        console.warn('Failed to get CSRF token:', error);
+      }
+    }
+
     const finalConfig: RequestInit = {
       ...config,
       headers,
+      credentials: 'include', // 重要：讓瀏覽器自動處理 Cookie (refresh token)
     };
 
+    // 清理自定義屬性
     delete (finalConfig as RequestConfig).requiresAuth;
+    delete (finalConfig as RequestConfig).skipCsrf;
 
     return [`${this.baseURL}${url}`, finalConfig];
   }
@@ -56,40 +75,39 @@ class ApiClient {
    * 處理回應、錯誤、token refresh 等
    */
   private async afterResponse(response: Response): Promise<Response> {
-    // 如果是 401 且有 refresh token，嘗試 refresh
+    // 如果是 401，嘗試使用 HttpOnly Cookie 中的 refresh token
     if (response.status === 401) {
-      const { getRefreshToken, setAuth, clearAuth } = useAuthStore.getState();
-      const refreshToken = getRefreshToken();
+      const { setAuth, clearAuth } = useAuthStore.getState();
 
-      if (refreshToken) {
-        try {
-          // 嘗試 refresh token
-          const refreshResponse = await fetch(
-            `${this.baseURL}/api/auth/refresh`,
-            {
-              method: 'POST',
-              headers: {
-                Authorization: `Bearer ${refreshToken}`,
-              },
-            }
-          );
-
-          if (refreshResponse.ok) {
-            const data = await refreshResponse.json();
-            setAuth(data);
-
-            // 重新發送原本的請求
-            // 這裡需要原始的 request info，暫時先返回原 response
-            // TODO: 實作 request retry
-            return response;
-          } else {
-            // Refresh token 也失效了，清除登入狀態
-            clearAuth();
+      try {
+        // 嘗試 refresh token (refresh token 存在 HttpOnly cookie，瀏覽器會自動帶上)
+        const refreshResponse = await fetch(
+          `${this.baseURL}/api/auth/refresh`,
+          {
+            method: 'POST',
+            credentials: 'include', // 瀏覽器自動帶上 refreshToken cookie
+            headers: {
+              'X-XSRF-TOKEN': await csrfManager.getToken(),
+            },
           }
-        } catch (error) {
-          console.error('Refresh token failed:', error);
+        );
+
+        if (refreshResponse.ok) {
+          const data = await refreshResponse.json();
+          setAuth(data);
+
+          // TODO: 實作 request retry - 重新發送原本的請求
+          // 目前先返回原 response，讓呼叫端處理
+          return response;
+        } else {
+          // Refresh token 也失效了，清除登入狀態
           clearAuth();
+          csrfManager.clearToken();
         }
+      } catch (error) {
+        console.error('Refresh token failed:', error);
+        clearAuth();
+        csrfManager.clearToken();
       }
     }
 
