@@ -13,7 +13,7 @@ export interface RegisterRequest {
 
 export interface AuthResponse {
   token: string;
-  refreshToken: string;
+  refreshToken?: string; // Optional - stored in HttpOnly cookie, not returned in response body
   username: string;
   email: string;
   role: string;
