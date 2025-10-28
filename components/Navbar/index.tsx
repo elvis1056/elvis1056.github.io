@@ -5,6 +5,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import { logout as logoutApi } from '@/lib/api/auth';
+import { csrfManager } from '@/lib/security/csrfManager';
 import { useAuthStore } from '@/stores/authStore';
 
 import Clock from '../Clock';
@@ -31,9 +33,16 @@ function Navbar({ className }: { className?: string }) {
     { href: '/blog', label: '部落格' },
   ];
 
-  const handleLogout = () => {
-    clearAuth();
-    router.push('/');
+  const logout = async () => {
+    try {
+      await logoutApi();
+    } catch (error) {
+      console.error('Logout failed:', error);
+    } finally {
+      clearAuth();
+      csrfManager.clearToken();
+      router.push('/');
+    }
   };
 
   // 禁止背景滾動
@@ -81,7 +90,7 @@ function Navbar({ className }: { className?: string }) {
                   {user ? (
                     <>
                       <span className="user-name">{user.username}</span>
-                      <button className="logout-btn" onClick={handleLogout}>
+                      <button className="logout-btn" onClick={logout}>
                         登出
                       </button>
                     </>
@@ -149,7 +158,7 @@ function Navbar({ className }: { className?: string }) {
                         <button
                           className="mobile-logout-btn"
                           onClick={() => {
-                            handleLogout();
+                            logout();
                             setIsMobileMenuOpen(false);
                           }}
                         >

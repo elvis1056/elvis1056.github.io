@@ -4,33 +4,38 @@ import { apiClient } from './client';
 
 /**
  * 登入 API
+ * Login 不需要 CSRF token（首次請求無法取得 token）
  */
 export async function login(data: LoginRequest): Promise<AuthResponse> {
-  return apiClient.post<AuthResponse>('/api/auth/login', data);
+  return apiClient.post<AuthResponse>('/api/auth/login', data, {
+    skipCsrf: true,
+  });
 }
 
 /**
  * 註冊 API
+ * Register 不需要 CSRF token（首次請求無法取得 token）
  */
 export async function register(data: RegisterRequest): Promise<AuthResponse> {
-  return apiClient.post<AuthResponse>('/api/auth/register', data);
+  return apiClient.post<AuthResponse>('/api/auth/register', data, {
+    skipCsrf: true,
+  });
 }
 
 /**
  * 使用 Refresh Token 換取新的 Access Token
+ * Refresh token 存在 HttpOnly Cookie，瀏覽器會自動帶上
  */
-export async function refreshAccessToken(
-  refreshToken: string
-): Promise<AuthResponse> {
-  return apiClient.post<AuthResponse>(
-    '/api/auth/refresh',
-    {},
-    {
-      headers: {
-        Authorization: `Bearer ${refreshToken}`,
-      },
-    }
-  );
+export async function refreshAccessToken(): Promise<AuthResponse> {
+  return apiClient.post<AuthResponse>('/api/auth/refresh', {});
+}
+
+/**
+ * 登出 API
+ * 清除後端的 HttpOnly Cookie
+ */
+export async function logout(): Promise<void> {
+  return apiClient.post<void>('/api/auth/logout', {});
 }
 
 /**
