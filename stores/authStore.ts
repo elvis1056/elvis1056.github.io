@@ -3,7 +3,7 @@ import { create } from 'zustand';
 import type { AuthResponse, User } from '@/types';
 
 interface AuthState {
-  // Access Token (內存，不持久化)
+  // Access Token (存在記憶體，不持久化)
   accessToken: string | null;
 
   // User info
@@ -12,7 +12,6 @@ interface AuthState {
   // Actions
   setAuth: (response: AuthResponse) => void;
   clearAuth: () => void;
-  getRefreshToken: () => string | null;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -20,7 +19,8 @@ export const useAuthStore = create<AuthState>((set) => ({
   user: null,
 
   setAuth: (response: AuthResponse) => {
-    // Access Token 存在內存 (Zustand)
+    // Access Token 存在記憶體 (Zustand)
+    // Refresh Token 由後端存在 HttpOnly Cookie，前端不需要處理
     set({
       accessToken: response.token,
       user: {
@@ -29,26 +29,10 @@ export const useAuthStore = create<AuthState>((set) => ({
         email: response.email,
       },
     });
-
-    // Refresh Token 存在 localStorage
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('refreshToken', response.refreshToken);
-    }
   },
 
   clearAuth: () => {
     set({ accessToken: null, user: null });
-
-    // 清除 localStorage
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('refreshToken');
-    }
-  },
-
-  getRefreshToken: () => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('refreshToken');
-    }
-    return null;
+    // Refresh Token 在 HttpOnly Cookie，由後端的 /api/auth/logout 清除
   },
 }));
