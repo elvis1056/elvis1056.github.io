@@ -15,6 +15,8 @@ interface RequestConfig extends RequestInit {
  */
 class ApiClient {
   private baseURL: string;
+  private isRefreshing = false; // 防止多個請求同時刷新 token
+  private refreshPromise: Promise<void> | null = null; // 共享的刷新 Promise
 
   constructor(baseURL: string) {
     this.baseURL = baseURL;
@@ -71,47 +73,126 @@ class ApiClient {
   }
 
   /**
+   * 執行 Token 刷新
+   * 負責呼叫 refresh API 並更新 auth store
+   */
+  private async refreshToken(): Promise<void> {
+    console.log('Starting token refresh...');
+    const { setAuth, clearAuth } = useAuthStore.getState();
+
+    const refreshResponse = await fetch(`${this.baseURL}/api/auth/refresh`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'X-XSRF-TOKEN': await csrfManager.getToken(),
+      },
+    });
+
+    if (!refreshResponse.ok) {
+      clearAuth();
+      csrfManager.clearToken();
+      console.warn('❌ Refresh token expired, user logged out');
+      throw new Error('Refresh token expired');
+    }
+
+    const data = await refreshResponse.json();
+    setAuth(data);
+    console.log('✅ Token refresh successful');
+  }
+
+  /**
+   * 確保 Token 已刷新（處理競態條件）
+   * 如果已有刷新在進行中，等待；否則開始新的刷新
+   */
+  private async ensureTokenRefreshed(): Promise<void> {
+    // 已有刷新在進行中，等待它完成
+    if (this.isRefreshing && this.refreshPromise) {
+      console.log('Token refresh already in progress, waiting...');
+      await this.refreshPromise;
+      console.log('Token refresh completed');
+      return;
+    }
+
+    // 開始新的刷新流程
+    this.isRefreshing = true;
+    this.refreshPromise = this.refreshToken();
+
+    try {
+      await this.refreshPromise;
+    } finally {
+      // 重置刷新狀態
+      this.isRefreshing = false;
+      this.refreshPromise = null;
+    }
+  }
+
+  /**
+   * 處理 401 錯誤：刷新 token 並重試原請求
+   */
+  private async handleTokenRefreshAndRetry(
+    originalUrl: string,
+    originalConfig: RequestInit
+  ): Promise<Response> {
+    // 確保 token 已刷新（處理競態條件）
+    await this.ensureTokenRefreshed();
+
+    // Token 刷新成功，重新發送原始請求
+    console.log('Retrying original request with new token...');
+
+    // 更新 Authorization header 使用新的 access token
+    const headers = new Headers(originalConfig.headers);
+    const { accessToken } = useAuthStore.getState();
+    if (accessToken) {
+      headers.set('Authorization', `Bearer ${accessToken}`);
+    }
+
+    const retryConfig: RequestInit = {
+      ...originalConfig,
+      headers,
+    };
+
+    const retryResponse = await fetch(originalUrl, retryConfig);
+
+    // 遞迴呼叫 afterResponse，標記為 retry（防止無限循環）
+    return this.afterResponse(retryResponse, originalUrl, retryConfig, true);
+  }
+
+  /**
    * Response interceptor
    * 處理回應、錯誤、token refresh 等
    */
-  private async afterResponse(response: Response): Promise<Response> {
-    // 如果是 401，嘗試使用 HttpOnly Cookie 中的 refresh token
-    if (response.status === 401) {
-      const { setAuth, clearAuth } = useAuthStore.getState();
-
-      try {
-        // 嘗試 refresh token (refresh token 存在 HttpOnly cookie，瀏覽器會自動帶上)
-        const refreshResponse = await fetch(
-          `${this.baseURL}/api/auth/refresh`,
-          {
-            method: 'POST',
-            credentials: 'include', // 瀏覽器自動帶上 refreshToken cookie
-            headers: {
-              'X-XSRF-TOKEN': await csrfManager.getToken(),
-            },
-          }
-        );
-
-        if (refreshResponse.ok) {
-          const data = await refreshResponse.json();
-          setAuth(data);
-
-          // TODO: 實作 request retry - 重新發送原本的請求
-          // 目前先返回原 response，讓呼叫端處理
-          return response;
-        } else {
-          // Refresh token 也失效了，清除登入狀態
-          clearAuth();
-          csrfManager.clearToken();
-        }
-      } catch (error) {
-        console.error('Refresh token failed:', error);
-        clearAuth();
-        csrfManager.clearToken();
-      }
+  private async afterResponse(
+    response: Response,
+    originalUrl: string,
+    originalConfig: RequestInit,
+    isRetry = false
+  ): Promise<Response> {
+    // Early return: 不是 401，直接返回
+    if (response.status !== 401) {
+      return response;
     }
 
-    return response;
+    // Early return: 已經是 retry，避免無限循環
+    if (isRetry) {
+      return response;
+    }
+
+    // Early return: 如果是 refresh API 本身失敗，避免無限循環
+    const requestUrl = new URL(originalUrl);
+    if (requestUrl.pathname.includes('/api/auth/refresh')) {
+      console.warn('Refresh token API itself returned 401');
+      return response;
+    }
+
+    // 處理 401：刷新 token 並重試
+    try {
+      return await this.handleTokenRefreshAndRetry(originalUrl, originalConfig);
+    } catch (error) {
+      console.error('Token refresh failed:', error);
+      // 刷新失敗，返回原始 401 response
+      // 注意：clearAuth 已在 refreshToken() 中執行，這裡不重複執行
+      return response;
+    }
   }
 
   /**
@@ -121,7 +202,7 @@ class ApiClient {
     const [finalUrl, finalConfig] = await this.beforeRequest(url, config);
 
     let response = await fetch(finalUrl, finalConfig);
-    response = await this.afterResponse(response);
+    response = await this.afterResponse(response, finalUrl, finalConfig);
 
     if (!response.ok) {
       const error = await response.json().catch(() => ({
