@@ -5,9 +5,9 @@ import { fetchBlogPostBySlug, fetchBlogPosts } from '@/lib/api/blog';
 import BlogPostContent from './BlogPostContent';
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // 靜態生成所有文章路徑（供 output: export 使用）
@@ -20,9 +20,10 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  console.log(params);
+  const { slug } = await params;
+  console.log(slug);
   try {
-    const post = await fetchBlogPostBySlug(params.slug);
+    const post = await fetchBlogPostBySlug(slug);
     return <BlogPostContent post={post} />;
   } catch (error) {
     console.error('Failed to fetch blog post:', error);
