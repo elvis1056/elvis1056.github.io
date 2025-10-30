@@ -1,6 +1,13 @@
 export type { Product } from './product';
 export type { BlogPost } from './blog';
 export type {
+  Tag,
+  Category,
+  PaginationMeta,
+  ApiResponse,
+  ApiError,
+} from './common';
+export type {
   LoginRequest,
   RegisterRequest,
   AuthResponse,
