@@ -76,7 +76,7 @@ function BlogPostContent({ className, post }: BlogPostContentProps) {
         {post.tags && post.tags.length > 0 && (
           <div className="tags-container">
             {post.tags.map((tag) => (
-              <TagBadge clickable key={tag.id} size="md" tag={tag} />
+              <TagBadge clickable={false} key={tag.id} size="md" tag={tag} />
             ))}
           </div>
         )}
