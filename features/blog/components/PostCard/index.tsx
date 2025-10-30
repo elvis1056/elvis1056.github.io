@@ -57,7 +57,7 @@ function PostCard({ className, post }: PostCardProps) {
         {/* 內容區域 */}
         <div className="content-container">
           {/* 標題（可點擊） */}
-          <Link className="title-link" href={`/blog/${post.id}`}>
+          <Link className="title-link" href={`/blog/${post.slug}`}>
             <h2 className="title">{post.title}</h2>
           </Link>
 
@@ -81,7 +81,7 @@ function PostCard({ className, post }: PostCardProps) {
           )}
 
           {/* 閱讀更多按鈕 */}
-          <Link className="read-more-btn" href={`/blog/${post.id}`}>
+          <Link className="read-more-btn" href={`/blog/${post.slug}`}>
             閱讀更多
           </Link>
         </div>

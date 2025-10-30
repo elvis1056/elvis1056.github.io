@@ -1,5 +1,5 @@
 export type { Product } from './product';
-export type { BlogPost } from './blog';
+export type { BlogPost, Series, SeriesInfo } from './blog';
 export type {
   Tag,
   Category,

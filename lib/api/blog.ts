@@ -8,6 +8,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
   return [
     {
       id: 1,
+      slug: 'nextjs-15-new-features',
       title: 'Next.js 15 新功能介紹',
       excerpt:
         '探索 Next.js 15 帶來的革命性更新，包括改進的 Server Components、更快的構建速度和全新的開發體驗...',
@@ -21,11 +22,19 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
         { id: 2, name: 'React', slug: 'react', color: '#61DAFB' },
         { id: 3, name: 'Web Development', slug: 'web-dev' },
       ],
+      series: {
+        id: 1,
+        name: 'Next.js 15 完全指南',
+        slug: 'nextjs-15-guide',
+        order: 1,
+        totalPosts: 3,
+      },
       createdAt: '2025-01-20T10:00:00Z',
       updatedAt: '2025-01-20T10:00:00Z',
     },
     {
       id: 2,
+      slug: 'typescript-best-practices',
       title: 'TypeScript 最佳實踐',
       excerpt:
         '學習如何在大型專案中有效使用 TypeScript，提升程式碼品質和開發效率，避免常見的陷阱...',
@@ -44,6 +53,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
     },
     {
       id: 3,
+      slug: 'react-query-practical-tips',
       title: 'React Query 實戰技巧',
       excerpt:
         'TanStack Query 讓資料抓取變得更簡單，了解如何在真實專案中應用這個強大的工具...',
@@ -62,6 +72,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
     },
     {
       id: 4,
+      slug: 'styled-components-advanced',
       title: 'Styled Components 進階技巧',
       excerpt: '深入探討 CSS-in-JS 的最佳實踐，學習如何建立可維護的樣式系統...',
       content: 'Styled Components 提供了強大的 CSS-in-JS 解決方案...',
@@ -78,11 +89,19 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
         },
         { id: 2, name: 'React', slug: 'react', color: '#61DAFB' },
       ],
+      series: {
+        id: 2,
+        name: 'React 樣式系統',
+        slug: 'react-styling',
+        order: 1,
+        totalPosts: 2,
+      },
       createdAt: '2025-01-23T10:00:00Z',
       updatedAt: '2025-01-23T10:00:00Z',
     },
     {
       id: 5,
+      slug: 'minimalist-blog-design',
       title: '打造極簡風格的部落格',
       excerpt:
         '探索如何設計一個極簡但功能完整的部落格系統，強調視覺美學與使用者體驗...',
@@ -100,6 +119,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
     },
     {
       id: 6,
+      slug: 'zustand-vs-redux',
       title: 'Zustand vs Redux：狀態管理比較',
       excerpt:
         '比較兩種流行的 React 狀態管理方案，幫助你選擇最適合專案的工具...',
@@ -113,6 +133,13 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
         { id: 15, name: 'Redux', slug: 'redux', color: '#764ABC' },
         { id: 8, name: 'State Management', slug: 'state-management' },
       ],
+      series: {
+        id: 3,
+        name: 'React 狀態管理指南',
+        slug: 'react-state-management',
+        order: 1,
+        totalPosts: 2,
+      },
       createdAt: '2025-01-25T10:00:00Z',
       updatedAt: '2025-01-25T10:00:00Z',
     },
@@ -122,6 +149,17 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
 export async function fetchBlogPostById(id: number): Promise<BlogPost> {
   const posts = await fetchBlogPosts();
   const post = posts.find((p) => p.id === id);
+
+  if (!post) {
+    throw new Error('Blog post not found');
+  }
+
+  return post;
+}
+
+export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost> {
+  const posts = await fetchBlogPosts();
+  const post = posts.find((p) => p.slug === slug);
 
   if (!post) {
     throw new Error('Blog post not found');
