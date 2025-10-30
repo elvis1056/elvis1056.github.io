@@ -1,13 +1,19 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import { fetchBlogPosts } from '@/lib/api/blog';
 import type { BlogPost } from '@/types';
 
-import { BlogList } from './blog-list';
+import BlogList from './BlogList';
+import style from './style';
 
-export default function BlogPage() {
+interface BlogPageProps {
+  className?: string;
+}
+
+function BlogPage({ className }: BlogPageProps) {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,9 +32,17 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <main style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1>部落格</h1>
-      {loading ? <p>載入中...</p> : <BlogList posts={posts} />}
+    <main className={className}>
+      <h1 className="page-title">部落格</h1>
+      {loading ? (
+        <p className="loading-text">載入中...</p>
+      ) : (
+        <BlogList posts={posts} />
+      )}
     </main>
   );
 }
+
+export default styled(BlogPage)`
+  ${style}
+`;
