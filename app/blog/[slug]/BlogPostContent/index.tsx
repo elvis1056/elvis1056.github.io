@@ -1,10 +1,13 @@
 'use client';
 
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import styled from 'styled-components';
 
 import TagBadge from '@/components/TagBadge';
 import type { BlogPost } from '@/types';
 
+import CodeBlock from './CodeBlock';
 import style from './style';
 
 interface BlogPostContentProps {
@@ -83,7 +86,23 @@ function BlogPostContent({ className, post }: BlogPostContentProps) {
 
         {/* 文章內容 */}
         <div className="post-content">
-          <p>{post.content}</p>
+          <ReactMarkdown
+            components={{
+              code({ className, children }) {
+                const match = /language-(\w+)/.exec(className || '');
+                return match ? (
+                  <CodeBlock language={match[1]}>
+                    {String(children).replace(/\n$/, '')}
+                  </CodeBlock>
+                ) : (
+                  <code className={className}>{children}</code>
+                );
+              },
+            }}
+            remarkPlugins={[remarkGfm]}
+          >
+            {post.content}
+          </ReactMarkdown>
         </div>
 
         {/* 系列資訊（如果在系列中） */}
