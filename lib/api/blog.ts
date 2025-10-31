@@ -1,149 +1,79 @@
 import type { BlogPost } from '@/types';
 
-// 🔥 假資料 - 之後改成真實 API
+// 從 Markdown 檔案中移除 Front Matter，只保留內容
+function extractMarkdownContent(markdown: string): string {
+  // 移除 Front Matter（在 --- 和 --- 之間的內容）
+  return markdown.replace(/^---\n[\s\S]*?\n---\n/, '').trim();
+}
+
+// 動態載入 Markdown 檔案內容
+async function loadMarkdownContent(slug: string): Promise<string> {
+  try {
+    // Webpack 會在 build time 處理這個動態 import
+    const file = await import(`@/content/blog/${slug}.md`);
+    return extractMarkdownContent(file.default);
+  } catch (error) {
+    console.error(`Failed to load markdown for slug: ${slug}`, error);
+    return '';
+  }
+}
+
+// 🎯 文章 metadata 配置（集中管理）
+// 新增文章只需在這裡加一個物件，content 會自動從對應的 .md 檔案載入
+const postsMetadata = [
+  {
+    id: 1,
+    slug: 'fix-zsh-command-not-found',
+    title: 'zsh: command not found 解決辦法',
+    excerpt:
+      '遇到 zsh: command not found 錯誤？學習如何檢查和設定終端機環境變數，解決 NVM 和其他命令找不到的問題...',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=450&fit=crop',
+    tags: [
+      { id: 16, name: 'Terminal', slug: 'terminal' },
+      { id: 17, name: 'Shell', slug: 'shell' },
+      { id: 18, name: 'macOS', slug: 'macos', color: '#000000' },
+      { id: 19, name: 'Troubleshooting', slug: 'troubleshooting' },
+      { id: 20, name: 'Dev Environment', slug: 'dev-environment' },
+    ],
+    createdAt: '2025-01-26T10:00:00Z',
+    updatedAt: '2025-01-26T10:00:00Z',
+  },
+  {
+    id: 2,
+    slug: 'what-is-mvc-mvvm',
+    title: '什麼是 MVC/MVVM',
+    excerpt:
+      '了解 MVC 與 MVVM 設計模式的差異，以及前後端分離後架構演進的歷程...',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop',
+    tags: [
+      { id: 21, name: 'MVC', slug: 'mvc' },
+      { id: 22, name: 'MVVM', slug: 'mvvm' },
+      { id: 23, name: 'Architecture', slug: 'architecture' },
+      { id: 24, name: 'Design Pattern', slug: 'design-pattern' },
+    ],
+    createdAt: '2025-01-27T10:00:00Z',
+    updatedAt: '2025-01-27T10:00:00Z',
+  },
+];
+
+// 🔥 動態載入文章內容
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
   // 模擬網路延遲
   await new Promise((resolve) => setTimeout(resolve, 500));
 
-  return [
-    {
-      id: 1,
-      slug: 'nextjs-15-new-features',
-      title: 'Next.js 15 新功能介紹',
-      excerpt:
-        '探索 Next.js 15 帶來的革命性更新，包括改進的 Server Components、更快的構建速度和全新的開發體驗...',
-      content:
-        'Next.js 15 引入了許多令人興奮的新功能，包括改進的 Server Components、更快的構建速度...',
-      author: 'Elvis',
-      imageUrl:
-        'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=450&fit=crop',
-      tags: [
-        { id: 1, name: 'Next.js', slug: 'nextjs', color: '#000000' },
-        { id: 2, name: 'React', slug: 'react', color: '#61DAFB' },
-        { id: 3, name: 'Web Development', slug: 'web-dev' },
-      ],
-      series: {
-        id: 1,
-        name: 'Next.js 15 完全指南',
-        slug: 'nextjs-15-guide',
-        order: 1,
-        totalPosts: 3,
-      },
-      createdAt: '2025-01-20T10:00:00Z',
-      updatedAt: '2025-01-20T10:00:00Z',
-    },
-    {
-      id: 2,
-      slug: 'typescript-best-practices',
-      title: 'TypeScript 最佳實踐',
-      excerpt:
-        '學習如何在大型專案中有效使用 TypeScript，提升程式碼品質和開發效率，避免常見的陷阱...',
-      content:
-        'TypeScript 為 JavaScript 增加了靜態型別檢查，大幅提升開發體驗和程式碼品質...',
-      author: 'Elvis',
-      imageUrl:
-        'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=450&fit=crop',
-      tags: [
-        { id: 4, name: 'TypeScript', slug: 'typescript', color: '#3178C6' },
-        { id: 5, name: 'JavaScript', slug: 'javascript', color: '#F7DF1E' },
-        { id: 6, name: 'Best Practices', slug: 'best-practices' },
-      ],
-      createdAt: '2025-01-21T10:00:00Z',
-      updatedAt: '2025-01-21T10:00:00Z',
-    },
-    {
-      id: 3,
-      slug: 'react-query-practical-tips',
-      title: 'React Query 實戰技巧',
-      excerpt:
-        'TanStack Query 讓資料抓取變得更簡單，了解如何在真實專案中應用這個強大的工具...',
-      content:
-        'TanStack Query（前身 React Query）提供了強大的伺服器狀態管理能力...',
-      author: 'Elvis',
-      imageUrl:
-        'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=450&fit=crop',
-      tags: [
-        { id: 2, name: 'React', slug: 'react', color: '#61DAFB' },
-        { id: 7, name: 'React Query', slug: 'react-query', color: '#FF4154' },
-        { id: 8, name: 'State Management', slug: 'state-management' },
-      ],
-      createdAt: '2025-01-22T10:00:00Z',
-      updatedAt: '2025-01-22T10:00:00Z',
-    },
-    {
-      id: 4,
-      slug: 'styled-components-advanced',
-      title: 'Styled Components 進階技巧',
-      excerpt: '深入探討 CSS-in-JS 的最佳實踐，學習如何建立可維護的樣式系統...',
-      content: 'Styled Components 提供了強大的 CSS-in-JS 解決方案...',
-      author: 'Elvis',
-      imageUrl:
-        'https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=450&fit=crop',
-      tags: [
-        { id: 9, name: 'CSS', slug: 'css', color: '#1572B6' },
-        {
-          id: 10,
-          name: 'Styled Components',
-          slug: 'styled-components',
-          color: '#DB7093',
-        },
-        { id: 2, name: 'React', slug: 'react', color: '#61DAFB' },
-      ],
-      series: {
-        id: 2,
-        name: 'React 樣式系統',
-        slug: 'react-styling',
-        order: 1,
-        totalPosts: 2,
-      },
-      createdAt: '2025-01-23T10:00:00Z',
-      updatedAt: '2025-01-23T10:00:00Z',
-    },
-    {
-      id: 5,
-      slug: 'minimalist-blog-design',
-      title: '打造極簡風格的部落格',
-      excerpt:
-        '探索如何設計一個極簡但功能完整的部落格系統，強調視覺美學與使用者體驗...',
-      content: '極簡設計不僅僅是減少元素，更是關於如何聚焦於核心價值...',
-      author: 'Elvis',
-      imageUrl:
-        'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=450&fit=crop',
-      tags: [
-        { id: 11, name: 'Design', slug: 'design' },
-        { id: 12, name: 'UI/UX', slug: 'ui-ux' },
-        { id: 13, name: 'Minimalism', slug: 'minimalism' },
-      ],
-      createdAt: '2025-01-24T10:00:00Z',
-      updatedAt: '2025-01-24T10:00:00Z',
-    },
-    {
-      id: 6,
-      slug: 'zustand-vs-redux',
-      title: 'Zustand vs Redux：狀態管理比較',
-      excerpt:
-        '比較兩種流行的 React 狀態管理方案，幫助你選擇最適合專案的工具...',
-      content: 'Zustand 和 Redux 都是優秀的狀態管理工具，但各有優缺點...',
-      author: 'Elvis',
-      imageUrl:
-        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop',
-      tags: [
-        { id: 2, name: 'React', slug: 'react', color: '#61DAFB' },
-        { id: 14, name: 'Zustand', slug: 'zustand' },
-        { id: 15, name: 'Redux', slug: 'redux', color: '#764ABC' },
-        { id: 8, name: 'State Management', slug: 'state-management' },
-      ],
-      series: {
-        id: 3,
-        name: 'React 狀態管理指南',
-        slug: 'react-state-management',
-        order: 1,
-        totalPosts: 2,
-      },
-      createdAt: '2025-01-25T10:00:00Z',
-      updatedAt: '2025-01-25T10:00:00Z',
-    },
-  ];
+  // 使用 Promise.all 平行載入所有文章的 content
+  const postsWithContent = await Promise.all(
+    postsMetadata.map(async (metadata) => ({
+      ...metadata,
+      content: await loadMarkdownContent(metadata.slug),
+    }))
+  );
+
+  return postsWithContent;
 }
 
 export async function fetchBlogPostById(id: number): Promise<BlogPost> {
