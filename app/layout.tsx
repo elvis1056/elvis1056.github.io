@@ -18,6 +18,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW">
+      <head>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+            body { 
+              opacity: 0; 
+              transition: opacity .5s ease-in;
+            }
+            body.loaded { 
+              opacity: 1; 
+            }
+          `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.addEventListener('load', () => {
+              document.body.classList.add('loaded');
+            });
+          `,
+          }}
+        />
+      </head>
       <body>
         <QueryProvider>
           <AuthInit />
