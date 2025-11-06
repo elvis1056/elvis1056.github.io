@@ -73,6 +73,34 @@ const postsMetadata = [
     createdAt: '2025-11-03T11:00:00Z',
     updatedAt: '2025-11-03T11:00:00Z',
   },
+  {
+    id: 4,
+    slug: 'database-normalization-1nf',
+    title: '資料庫正規 - 1NF',
+    excerpt:
+      '核心概念：每個欄位都必須是原子性的（atomic），也就是不可再分割的單一值',
+    author: 'Elvis',
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Database', slug: 'database' },
+      { id: 2, name: '1NF', slug: '1NF' },
+    ],
+    createdAt: '2025-11-06T13:30:00Z',
+    updatedAt: '2025-11-06T13:30:00Z',
+  },
+  {
+    id: 5,
+    slug: 'database-normalization',
+    title: '資料庫正規規則',
+    excerpt: 'NF 各個條目',
+    author: 'Elvis',
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [{ id: 1, name: 'Principle', slug: 'principal' }],
+    createdAt: '2025-11-06T13:30:00Z',
+    updatedAt: '2025-11-06T13:30:00Z',
+  },
 ];
 
 // 🔥 動態載入文章內容
