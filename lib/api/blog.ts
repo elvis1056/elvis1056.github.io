@@ -75,10 +75,21 @@ const postsMetadata = [
   },
   {
     id: 4,
+    slug: 'database-normalization',
+    title: '資料庫正規規則',
+    excerpt: 'NF 各個條目',
+    author: 'Elvis',
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [{ id: 1, name: 'Principle', slug: 'principal' }],
+    createdAt: '2025-11-06T13:30:00Z',
+    updatedAt: '2025-11-06T13:30:00Z',
+  },
+  {
+    id: 5,
     slug: 'database-normalization-1nf',
     title: '資料庫正規 - 1NF',
-    excerpt:
-      '核心概念：每個欄位都必須是原子性的（atomic），也就是不可再分割的單一值',
+    excerpt: '1NF 去除重複資料',
     author: 'Elvis',
     imageUrl:
       'https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
@@ -90,16 +101,34 @@ const postsMetadata = [
     updatedAt: '2025-11-06T13:30:00Z',
   },
   {
-    id: 5,
-    slug: 'database-normalization',
-    title: '資料庫正規規則',
-    excerpt: 'NF 各個條目',
+    id: 6,
+    slug: 'database-normalization-2nf',
+    title: '資料庫正規 - 2NF',
+    excerpt: '2NF 去除部分功能相依',
     author: 'Elvis',
     imageUrl:
       'https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
-    tags: [{ id: 1, name: 'Principle', slug: 'principal' }],
-    createdAt: '2025-11-06T13:30:00Z',
-    updatedAt: '2025-11-06T13:30:00Z',
+    tags: [
+      { id: 1, name: 'Database', slug: 'database' },
+      { id: 2, name: '2NF', slug: '2NF' },
+    ],
+    createdAt: '2025-11-07T11:30:00Z',
+    updatedAt: '2025-11-07T11:30:00Z',
+  },
+  {
+    id: 7,
+    slug: 'database-normalization-3nf',
+    title: '資料庫正規 - 3NF',
+    excerpt: '3NF 就是要消除遞移依賴',
+    author: 'Elvis',
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Database', slug: 'database' },
+      { id: 2, name: '3NF', slug: '3NF' },
+    ],
+    createdAt: '2025-11-07T12:00:00Z',
+    updatedAt: '2025-11-07T12:00:00Z',
   },
 ];
 
