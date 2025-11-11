@@ -130,6 +130,36 @@ const postsMetadata = [
     createdAt: '2025-11-07T12:00:00Z',
     updatedAt: '2025-11-07T12:00:00Z',
   },
+  {
+    id: 8,
+    slug: 'extra-language',
+    title: '各類英文名詞與句子',
+    excerpt: 'just for learn english',
+    author: 'Elvis',
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Language', slug: 'language' },
+      { id: 2, name: 'translate', slug: 'translate' },
+    ],
+    createdAt: '2025-11-11T14:34:00Z',
+    updatedAt: '2025-11-11T14:34:00Z',
+  },
+  {
+    id: 9,
+    slug: 'about-oop',
+    title: 'Object-Oriented Programming 物件導向',
+    excerpt: 'learn OOP',
+    author: 'Elvis',
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'OOP', slug: 'OOP' },
+      { id: 2, name: 'Programming', slug: 'programming' },
+    ],
+    createdAt: '2025-11-11T14:34:00Z',
+    updatedAt: '2025-11-11T14:34:00Z',
+  },
 ];
 
 // 🔥 動態載入文章內容
