@@ -98,6 +98,21 @@ function BlogPostContent({ className, post }: BlogPostContentProps) {
                   <code className={className}>{children}</code>
                 );
               },
+              img({ src, alt }) {
+                const basePath =
+                  process.env.ENV === 'production' ? '/5dpapa' : '/5dpapa';
+                const imageSrc = src?.startsWith('/')
+                  ? `${basePath}${src}`
+                  : src;
+                return (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    alt={alt || ''}
+                    src={imageSrc || ''}
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                );
+              },
             }}
             remarkPlugins={[remarkGfm]}
           >
