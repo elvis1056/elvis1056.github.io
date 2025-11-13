@@ -5,12 +5,11 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import Clock from '@/components/Clock';
+import { Logo } from '@/components/Logo';
 import { logout as logoutApi } from '@/lib/api/auth';
 import { csrfManager } from '@/lib/security/csrfManager';
 import { useAuthStore } from '@/stores/authStore';
-
-import Clock from '../Clock';
-import { Logo } from '../Logo';
 
 import style from './style';
 
@@ -29,6 +28,7 @@ function Navbar({ className }: { className?: string }) {
 
   const navLinks = [
     { href: '/', label: '首頁' },
+    { href: '/about', label: '關於我' },
     { href: '/shop', label: '商城' },
     { href: '/blog', label: '部落格' },
   ];
