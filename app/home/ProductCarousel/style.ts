@@ -45,7 +45,7 @@ const style = css`
 
   .swiper-button {
     position: absolute;
-    opacity: 0.5;
+    opacity: 0.2;
     z-index: 10;
     border-radius: 50%;
     background: ${theme.colors.primary.main};
@@ -66,7 +66,7 @@ const style = css`
     }
 
     &:hover {
-      opacity: 1;
+      opacity: 0.4;
     }
   }
 
