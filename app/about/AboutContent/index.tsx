@@ -61,13 +61,11 @@ function AboutContent({ className }: AboutContentProps) {
             </div>
             <div className="right">
               <div className="image-wrapper">
-                <div>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    alt="Elvis Lin"
-                    src={assetPath('/images/about/background.jpeg')}
-                  />
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  alt="Elvis Lin"
+                  src={assetPath('/images/about/background.jpeg')}
+                />
               </div>
             </div>
           </div>

@@ -240,6 +240,7 @@ export default css`
           .left {
             border-bottom: 0;
             border: none;
+            height: 100%;
 
             .description {
               text-align: center;
