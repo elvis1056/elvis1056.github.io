@@ -19,15 +19,19 @@ export default function RootLayout({
   return (
     <html lang="zh-TW">
       <head>
+        <meta
+          content="hce2ToOyyPUu1SFJ41CA6EpBz1rqcIqFFYfWKO5MKSM"
+          name="google-site-verification"
+        />
         <style
           dangerouslySetInnerHTML={{
             __html: `
-            body { 
-              opacity: 0; 
+            body {
+              opacity: 0;
               transition: opacity .5s ease-in;
             }
-            body.loaded { 
-              opacity: 1; 
+            body.loaded {
+              opacity: 1;
             }
           `,
           }}
