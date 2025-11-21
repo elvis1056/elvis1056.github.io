@@ -17,6 +17,7 @@ interface ProductCardProps {
   image: string;
   subtitle?: string;
   tags?: string[];
+  href: string;
 }
 
 function ProductCard({
@@ -26,11 +27,12 @@ function ProductCard({
   image,
   subtitle: _subtitle,
   tags = [],
+  href,
 }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <Link className={className} href={`/product/${id}`}>
+    <Link className={className} href={href}>
       <div className="card-container">
         {/* 圖片區域 */}
         <div className="image-container">

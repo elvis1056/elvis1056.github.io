@@ -19,6 +19,7 @@ interface Product {
   image: string;
   subtitle?: string;
   tags?: string[];
+  href: string;
 }
 
 interface ProductCarouselProps {
