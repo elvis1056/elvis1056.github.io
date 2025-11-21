@@ -12,7 +12,7 @@ import style from './style';
 
 interface ProductCardProps {
   className?: string;
-  id: string;
+  id?: string;
   title: string;
   image: string;
   subtitle?: string;
@@ -22,7 +22,6 @@ interface ProductCardProps {
 
 function ProductCard({
   className,
-  id,
   title,
   image,
   subtitle: _subtitle,
