@@ -175,6 +175,36 @@ const postsMetadata = [
     createdAt: '2025-11-13T13:00:00Z',
     updatedAt: '2025-11-13T13:00:00Z',
   },
+  {
+    id: 11,
+    slug: 'twitch-workers-example-1',
+    title: 'Twitch worker 範例 ep.2',
+    excerpt: '學習 cloudflare 與 worker',
+    author: 'Elvis',
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Cloudflare', slug: 'cloudflare' },
+      { id: 2, name: 'Worker', slug: 'worker' },
+    ],
+    createdAt: '2025-11-20T13:00:00Z',
+    updatedAt: '2025-11-20T13:00:00Z',
+  },
+  {
+    id: 12,
+    slug: 'twitch-workers-example-2',
+    title: 'Twitch worker 範例 ep.1',
+    excerpt: '學習 cloudflare 與 worker',
+    author: 'Elvis',
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Cloudflare', slug: 'cloudflare' },
+      { id: 2, name: 'Worker', slug: 'worker' },
+    ],
+    createdAt: '2025-11-20T13:00:00Z',
+    updatedAt: '2025-11-20T13:00:00Z',
+  },
 ];
 
 // 🔥 動態載入文章內容
