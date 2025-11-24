@@ -205,6 +205,38 @@ const postsMetadata = [
     createdAt: '2025-11-20T13:00:00Z',
     updatedAt: '2025-11-20T13:00:00Z',
   },
+  {
+    id: 13,
+    slug: 'key-considerations-for-java-dockerfile-configuration-ep1',
+    title: 'Java Dockerfile 配置關鍵考量 EP.1',
+    excerpt: '學習如何正確配置 Java 應用的 Dockerfile',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1605745341112-85968b19335b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Java', slug: 'java' },
+      { id: 2, name: 'Docker', slug: 'docker' },
+      { id: 3, name: 'Dockerfile', slug: 'dockerfile' },
+    ],
+    createdAt: '2025-11-24T23:00:00Z',
+    updatedAt: '2025-11-24T23:00:00Z',
+  },
+  {
+    id: 14,
+    slug: 'key-considerations-for-java-dockerfile-configuration-ep2',
+    title: 'Java Dockerfile 配置關鍵考量 EP.2',
+    excerpt: '深入探討 Java Dockerfile 的進階配置技巧',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1605745341112-85968b19335b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Java', slug: 'java' },
+      { id: 2, name: 'Docker', slug: 'docker' },
+      { id: 3, name: 'Dockerfile', slug: 'dockerfile' },
+    ],
+    createdAt: '2025-11-24T23:30:00Z',
+    updatedAt: '2025-11-24T23:30:00Z',
+  },
 ];
 
 // 🔥 動態載入文章內容
