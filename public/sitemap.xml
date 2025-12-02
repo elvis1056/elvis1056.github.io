@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 首頁 -->
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/</loc>
+    <lastmod>2025-11-24T23:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- About 頁面 -->
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/about</loc>
+    <lastmod>2025-11-24T23:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Shop 頁面 -->
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/shop</loc>
+    <lastmod>2025-11-24T23:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Blog 列表頁 -->
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog</loc>
+    <lastmod>2025-11-24T23:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Blog 文章 -->
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/fix-zsh-command-not-found</loc>
+    <lastmod>2025-01-26T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/what-is-mvc-mvvm</loc>
+    <lastmod>2025-01-27T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/Lombok-Builder</loc>
+    <lastmod>2025-11-03T11:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/database-normalization</loc>
+    <lastmod>2025-11-06T13:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/database-normalization-1nf</loc>
+    <lastmod>2025-11-06T13:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/database-normalization-2nf</loc>
+    <lastmod>2025-11-07T11:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/database-normalization-3nf</loc>
+    <lastmod>2025-11-07T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/extra-language</loc>
+    <lastmod>2025-11-11T14:34:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/about-oop</loc>
+    <lastmod>2025-11-11T14:34:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/render-deploy-postgresql</loc>
+    <lastmod>2025-11-13T13:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/twitch-workers-example-1</loc>
+    <lastmod>2025-11-20T13:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/twitch-workers-example-2</loc>
+    <lastmod>2025-11-20T13:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/key-considerations-for-java-dockerfile-configuration-ep1</loc>
+    <lastmod>2025-11-24T23:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/key-considerations-for-java-dockerfile-configuration-ep2</loc>
+    <lastmod>2025-11-24T23:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+</urlset>
