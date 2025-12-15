@@ -319,6 +319,108 @@ const postsMetadata = [
     createdAt: '2025-12-02T23:30:00Z',
     updatedAt: '2025-12-02T23:30:00Z',
   },
+  {
+    id: 20,
+    slug: 'java-create-categories-thinking-process',
+    title: '從「需求」到「程式碼」的思考流程',
+    excerpt: '如何從需求分析開始設計兩層商品分類系統',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Java', slug: 'java' },
+      { id: 2, name: 'Design', slug: 'design' },
+      { id: 3, name: 'System Design', slug: 'system-design' },
+      { id: 4, name: 'Categories', slug: 'categories' },
+    ],
+    createdAt: '2025-12-03T23:30:00Z',
+    updatedAt: '2025-12-03T23:30:00Z',
+  },
+  {
+    id: 21,
+    slug: 'java-new-member',
+    title: 'RegisterRequest 的設計解析',
+    excerpt: '關注點分離與 RegisterRequest 的完整設計解說',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Java', slug: 'java' },
+      { id: 2, name: 'Spring Boot', slug: 'spring-boot' },
+      { id: 3, name: 'Design Pattern', slug: 'design-pattern' },
+      { id: 4, name: 'Authentication', slug: 'authentication' },
+    ],
+    createdAt: '2025-12-04T23:30:00Z',
+    updatedAt: '2025-12-04T23:30:00Z',
+  },
+  {
+    id: 22,
+    slug: 'java-new-member-entity',
+    title: 'User Entity 設計詳解',
+    excerpt: '深入解析 User.java Entity 的設計思路與實作細節',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Java', slug: 'java' },
+      { id: 2, name: 'JPA', slug: 'jpa' },
+      { id: 3, name: 'Entity', slug: 'entity' },
+      { id: 4, name: 'Database', slug: 'database' },
+    ],
+    createdAt: '2025-12-05T23:30:00Z',
+    updatedAt: '2025-12-05T23:30:00Z',
+  },
+  {
+    id: 23,
+    slug: 'java-securityfilterchain',
+    title: '理解 Spring Security FilterChain',
+    excerpt: 'SecurityFilterChain 的運作原理與設定解析',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Java', slug: 'java' },
+      { id: 2, name: 'Spring Security', slug: 'spring-security' },
+      { id: 3, name: 'Security', slug: 'security' },
+      { id: 4, name: 'Filter', slug: 'filter' },
+    ],
+    createdAt: '2025-12-06T23:30:00Z',
+    updatedAt: '2025-12-06T23:30:00Z',
+  },
+  {
+    id: 24,
+    slug: 'java-thinking-and-making-decisions',
+    title: 'Java 開發的關鍵決策總覽',
+    excerpt: 'Entity 層設計的所有關鍵決策點與選擇分析',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Java', slug: 'java' },
+      { id: 2, name: 'Architecture', slug: 'architecture' },
+      { id: 3, name: 'Design', slug: 'design' },
+      { id: 4, name: 'Best Practice', slug: 'best-practice' },
+    ],
+    createdAt: '2025-12-07T23:30:00Z',
+    updatedAt: '2025-12-07T23:30:00Z',
+  },
+  {
+    id: 25,
+    slug: 'java-verify-database-step',
+    title: 'PostgreSQL 資料庫驗證指南',
+    excerpt: '如何使用 Docker 連接並驗證 PostgreSQL 資料庫',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'PostgreSQL', slug: 'postgresql' },
+      { id: 2, name: 'Docker', slug: 'docker' },
+      { id: 3, name: 'Database', slug: 'database' },
+      { id: 4, name: 'Verification', slug: 'verification' },
+    ],
+    createdAt: '2025-12-08T23:30:00Z',
+    updatedAt: '2025-12-08T23:30:00Z',
+  },
 ];
 
 // 🔥 動態載入文章內容

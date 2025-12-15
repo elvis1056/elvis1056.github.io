@@ -165,4 +165,46 @@
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/java-create-categories-thinking-process</loc>
+    <lastmod>2025-12-03T23:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/java-new-member</loc>
+    <lastmod>2025-12-04T23:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/java-new-member-entity</loc>
+    <lastmod>2025-12-05T23:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/java-securityfilterchain</loc>
+    <lastmod>2025-12-06T23:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/java-thinking-and-making-decisions</loc>
+    <lastmod>2025-12-07T23:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://elvis1056.github.io/5dpapa/blog/java-verify-database-step</loc>
+    <lastmod>2025-12-08T23:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
 </urlset>
