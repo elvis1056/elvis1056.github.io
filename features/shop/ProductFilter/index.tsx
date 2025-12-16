@@ -20,7 +20,11 @@ const categories = [
   { id: 'corporate', name: '企業活動', icon: '🏢' },
 ];
 
-function ProductFilter({ selectedCategory, onCategoryChange, className }: ProductFilterProps) {
+function ProductFilter({
+  selectedCategory,
+  onCategoryChange,
+  className,
+}: ProductFilterProps) {
   return (
     <div className={className}>
       <div className="filter-container">

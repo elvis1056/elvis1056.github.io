@@ -26,7 +26,7 @@ export function useAuthInit() {
         setAuth(response);
 
         console.log('Auth state restored from refresh token');
-      } catch (error) {
+      } catch {
         // Refresh token 不存在或已過期，保持未登入狀態
         console.log('No valid refresh token, user not logged in');
       }

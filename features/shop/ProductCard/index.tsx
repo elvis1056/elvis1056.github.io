@@ -19,9 +19,9 @@ function ProductCard({ product, className }: ProductCardProps) {
         <div className="card-image">
           {product.imageUrl ? (
             <Image
-              src={product.imageUrl}
               alt={product.name}
               fill
+              src={product.imageUrl}
               style={{ objectFit: 'contain' }}
             />
           ) : (
@@ -38,7 +38,9 @@ function ProductCard({ product, className }: ProductCardProps) {
         <div className="card-footer">
           <div className="card-price">
             <span className="price-label">NT$</span>
-            <span className="price-value">{product.price.toLocaleString()}</span>
+            <span className="price-value">
+              {product.price.toLocaleString()}
+            </span>
           </div>
           <button className="add-to-cart-btn">加入購物車</button>
         </div>

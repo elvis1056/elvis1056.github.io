@@ -1,29 +1,29 @@
 export const colors = {
   // Primary - 深橄欖綠系列（自然、專業、沉穩）
   primary: {
-    main: '#6B7F5C',      // 深橄欖綠
-    light: '#8FA17D',     // 淺橄欖綠
-    dark: '#4D5E42',      // 深綠
-    50: '#f4f6f2',        // 最淺（淡綠白）
-    100: '#e8ede4',       // 很淺
-    200: '#8FA17D',       // 淺色
-    300: '#6B7F5C',       // 主色
-    400: '#4D5E42',       // 深色
-    500: '#3A4833',       // 最深
+    main: '#6B7F5C', // 深橄欖綠
+    light: '#8FA17D', // 淺橄欖綠
+    dark: '#4D5E42', // 深綠
+    50: '#f4f6f2', // 最淺（淡綠白）
+    100: '#e8ede4', // 很淺
+    200: '#8FA17D', // 淺色
+    300: '#6B7F5C', // 主色
+    400: '#4D5E42', // 深色
+    500: '#3A4833', // 最深
   },
 
   // Secondary - 金棕色系列（溫暖、奢華）
   secondary: {
-    main: '#9B764F',      // 金棕色
-    light: '#B89470',     // 淺金棕
-    dark: '#7A5D3F',      // 深棕
+    main: '#9B764F', // 金棕色
+    light: '#B89470', // 淺金棕
+    dark: '#7A5D3F', // 深棕
   },
 
   // Accent - 金色點綴
   accent: {
-    main: '#D4AF37',      // 金色
-    light: '#E5C56B',     // 淺金
-    dark: '#B8942A',      // 深金
+    main: '#D4AF37', // 金色
+    light: '#E5C56B', // 淺金
+    dark: '#B8942A', // 深金
   },
 
   // Neutral - 中性色
@@ -49,23 +49,23 @@ export const colors = {
 
   // Background
   background: {
-    default: '#f5e6d3',    // 淺米黃紙質色
-    paper: '#faf6f0',      // 卡片背景稍亮一點
-    hover: '#ebe1d0',      // hover 稍深一點
+    default: '#f5e6d3', // 淺米黃紙質色
+    paper: '#faf6f0', // 卡片背景稍亮一點
+    hover: '#ebe1d0', // hover 稍深一點
   },
 
   // Border
   border: {
-    light: '#e8ede4',     // 淺綠白
-    main: '#8FA17D',      // 淺橄欖綠
-    dark: '#6B7F5C',      // 深橄欖綠
+    light: '#e8ede4', // 淺綠白
+    main: '#8FA17D', // 淺橄欖綠
+    dark: '#6B7F5C', // 深橄欖綠
   },
 
   // Text
   text: {
-    primary: '#000000',      // 主要文字：黑色
-    secondary: '#374151',    // 次要文字：深灰
-    disabled: '#9ca3af',     // 禁用文字：淺灰
+    primary: '#000000', // 主要文字：黑色
+    secondary: '#374151', // 次要文字：深灰
+    disabled: '#9ca3af', // 禁用文字：淺灰
   },
 } as const;
 
@@ -84,13 +84,13 @@ export const typography = {
     heading: 'inherit',
   },
   fontSize: {
-    xs: '0.75rem',   // 12px
-    sm: '0.875rem',  // 14px
-    base: '1rem',    // 16px
-    lg: '1.125rem',  // 18px
-    xl: '1.25rem',   // 20px
+    xs: '0.75rem', // 12px
+    sm: '0.875rem', // 14px
+    base: '1rem', // 16px
+    lg: '1.125rem', // 18px
+    xl: '1.25rem', // 20px
     '2xl': '1.5rem', // 24px
-    '3xl': '2rem',   // 32px
+    '3xl': '2rem', // 32px
   },
   fontWeight: {
     normal: 400,
@@ -108,7 +108,7 @@ export const breakpoints = {
 } as const;
 
 export const shadows = {
-  sm: '0 1px 2px rgba(107, 127, 92, 0.06)',     // 深橄欖綠陰影
+  sm: '0 1px 2px rgba(107, 127, 92, 0.06)', // 深橄欖綠陰影
   md: '0 2px 8px rgba(107, 127, 92, 0.1)',
   lg: '0 4px 16px rgba(107, 127, 92, 0.15)',
 } as const;
