@@ -1,0 +1,29 @@
+# 依賴套件
+node_modules
+
+# Next.js 建構輸出
+.next
+out
+
+# Next.js 自動生成的型別檔案
+next-env.d.ts
+
+# 測試覆蓋率
+coverage
+
+# 環境變數
+.env
+.env.local
+.env.production.local
+.env.development.local
+
+# 配置檔案（如果不想 lint）
+# next.config.ts
+# prettier.config.js
+
+# 公共靜態資源
+public
+
+# 其他
+.DS_Store
+*.log
