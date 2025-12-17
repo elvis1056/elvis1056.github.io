@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import 'github-markdown-css/github-markdown-light.css';
+
 import { AuthInit } from '@/components/AuthInit';
 import Navbar from '@/components/Navbar';
 

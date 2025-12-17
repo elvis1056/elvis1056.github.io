@@ -85,7 +85,7 @@ function BlogPostContent({ className, post }: BlogPostContentProps) {
         )}
 
         {/* 文章內容 */}
-        <div className="post-content">
+        <div className="post-content markdown-body">
           <ReactMarkdown
             components={{
               code({ className, children }) {

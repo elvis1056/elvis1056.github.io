@@ -99,57 +99,16 @@ const style = css`
 
   /* 文章內容 */
   .post-content {
-    font-size: ${theme.typography.fontSize.lg};
-    line-height: 1.8;
-    color: ${theme.colors.text.primary};
     margin-bottom: ${theme.spacing['2xl']};
 
-    p {
-      margin-bottom: ${theme.spacing.lg};
-    }
-
-    /* 未來會加入 Markdown 樣式 */
-    h2 {
-      font-size: ${theme.typography.fontSize['2xl']};
-      font-weight: ${theme.typography.fontWeight.bold};
-      margin: ${theme.spacing['2xl']} 0 ${theme.spacing.lg} 0;
-    }
-
-    h3 {
-      font-size: ${theme.typography.fontSize.xl};
-      font-weight: ${theme.typography.fontWeight.semibold};
-      margin: ${theme.spacing.xl} 0 ${theme.spacing.md} 0;
-    }
-
-    code {
-      padding: 2px 6px;
-      background-color: ${theme.colors.neutral.gray100};
-      border-radius: 4px;
-      font-family: 'Monaco', 'Courier New', monospace;
-      font-size: 0.9em;
-    }
-
-    pre {
-      padding: ${theme.spacing.lg};
-      background-color: ${theme.colors.neutral.gray900};
-      color: ${theme.colors.neutral.gray100};
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: ${theme.spacing.lg} 0;
-
-      code {
-        padding: 0;
-        background-color: transparent;
-      }
-    }
-
-    a {
-      color: ${theme.colors.primary.main};
-      text-decoration: underline;
-
-      &:hover {
-        color: ${theme.colors.primary.dark};
-      }
+    /* 使用 GitHub Markdown CSS 原始樣式 */
+    &.markdown-body {
+      /* 只保留必要的覆寫 */
+      background-color: transparent;
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 100%;
+      padding: 0;
     }
   }
 
