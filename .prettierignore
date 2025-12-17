@@ -1,0 +1,15 @@
+# Markdown 檔案（部落格內容）
+content/**/*.md
+
+# 其他不需要格式化的檔案
+node_modules
+.next
+out
+build
+dist
+coverage
+*.min.js
+*.min.css
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
