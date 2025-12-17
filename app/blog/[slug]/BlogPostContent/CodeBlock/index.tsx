@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { oneLight } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import styled from 'styled-components';
 
 import style from './style';
@@ -44,7 +44,7 @@ function CodeBlock({ className, language, children }: CodeBlockProps) {
           background: 'inherit',
         }}
         language={language}
-        style={vscDarkPlus}
+        style={oneLight}
       >
         {children}
       </SyntaxHighlighter>

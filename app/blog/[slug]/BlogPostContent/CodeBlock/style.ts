@@ -12,21 +12,23 @@ const style = css`
     padding: 6px 12px;
     font-size: ${theme.typography.fontSize.xs};
     font-weight: ${theme.typography.fontWeight.medium};
-    color: ${theme.colors.neutral.gray400};
-    background-color: rgba(30, 30, 30, 0.8);
+    color: ${theme.colors.neutral.gray600};
+    background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(4px);
-    border: 1px solid ${theme.colors.neutral.gray700};
+    border: 1px solid ${theme.colors.neutral.gray300};
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s ease;
     z-index: 10;
     opacity: 0;
     pointer-events: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
     &:hover {
-      color: ${theme.colors.neutral.gray300};
-      border-color: ${theme.colors.neutral.gray600};
-      background-color: rgba(42, 42, 42, 0.9);
+      color: ${theme.colors.neutral.gray900};
+      border-color: ${theme.colors.neutral.gray400};
+      background-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     }
 
     &[data-copied='true'] {
@@ -63,16 +65,16 @@ const style = css`
   }
 
   pre::-webkit-scrollbar-track {
-    background: #1e1e1e;
+    background: ${theme.colors.neutral.gray100};
     border-radius: 4px;
   }
 
   pre::-webkit-scrollbar-thumb {
-    background: #4a4a4a;
+    background: ${theme.colors.neutral.gray400};
     border-radius: 4px;
 
     &:hover {
-      background: #5a5a5a;
+      background: ${theme.colors.neutral.gray500};
     }
   }
 `;
