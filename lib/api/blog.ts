@@ -421,6 +421,23 @@ const postsMetadata = [
     createdAt: '2025-12-08T23:30:00Z',
     updatedAt: '2025-12-08T23:30:00Z',
   },
+  {
+    id: 26,
+    slug: 'java-create-cart',
+    title: '關於購物車完整攻略',
+    excerpt: '從需求分析到實作的購物車功能開發指南',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Java', slug: 'java' },
+      { id: 2, name: 'Shopping Cart', slug: 'shopping-cart' },
+      { id: 3, name: 'E-commerce', slug: 'e-commerce' },
+      { id: 4, name: 'Backend', slug: 'backend' },
+    ],
+    createdAt: '2025-12-17T23:30:00Z',
+    updatedAt: '2025-12-17T23:30:00Z',
+  },
 ];
 
 // 🔥 動態載入文章內容
