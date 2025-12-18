@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  console.log(slug);
+
   try {
     const post = await fetchBlogPostBySlug(slug);
     return <BlogPostContent post={post} />;
