@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
@@ -13,19 +14,31 @@ interface BlogPageProps {
   className?: string;
 }
 
-type SortOption =
-  | 'default'
-  | 'updatedAt-desc'
-  | 'updatedAt-asc'
-  | 'createdAt-desc'
-  | 'createdAt-asc'
-  | 'title-asc'
-  | 'title-desc';
+// 排序選項常數（避免字串打錯）
+const SORT_OPTIONS = {
+  DEFAULT: 'default',
+  UPDATED_DESC: 'updatedAt-desc',
+  UPDATED_ASC: 'updatedAt-asc',
+  CREATED_DESC: 'createdAt-desc',
+  CREATED_ASC: 'createdAt-asc',
+  TITLE_ASC: 'title-asc',
+  TITLE_DESC: 'title-desc',
+} as const;
+
+type SortOption = (typeof SORT_OPTIONS)[keyof typeof SORT_OPTIONS];
 
 function BlogPage({ className }: BlogPageProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState<SortOption>('default');
+
+  // 從 URL 讀取排序參數（Single source of truth）
+  const sortBy = useMemo(() => {
+    const sortParam = searchParams.get('sort') as SortOption;
+    return sortParam || SORT_OPTIONS.DEFAULT;
+  }, [searchParams]);
 
   useEffect(() => {
     fetchBlogPosts()
@@ -46,37 +59,52 @@ function BlogPage({ className }: BlogPageProps) {
     const postsCopy = [...posts];
 
     switch (sortBy) {
-      case 'default':
-        // 預設排序：按照 ID 升序（文章新增的順序）
-        return postsCopy.sort((a, b) => a.id - b.id);
-      case 'updatedAt-desc':
-        return postsCopy.sort(
-          (a, b) =>
-            new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-        );
-      case 'updatedAt-asc':
-        return postsCopy.sort(
-          (a, b) =>
-            new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
-        );
-      case 'createdAt-desc':
+      case SORT_OPTIONS.DEFAULT:
+        // 預設排序：按照發布時間降序（最新到最舊）
         return postsCopy.sort(
           (a, b) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
-      case 'createdAt-asc':
+      case SORT_OPTIONS.UPDATED_DESC:
+        return postsCopy.sort(
+          (a, b) =>
+            new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+        );
+      case SORT_OPTIONS.UPDATED_ASC:
+        return postsCopy.sort(
+          (a, b) =>
+            new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
+        );
+      case SORT_OPTIONS.CREATED_DESC:
+        return postsCopy.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      case SORT_OPTIONS.CREATED_ASC:
         return postsCopy.sort(
           (a, b) =>
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         );
-      case 'title-asc':
+      case SORT_OPTIONS.TITLE_ASC:
         return postsCopy.sort((a, b) => a.title.localeCompare(b.title));
-      case 'title-desc':
+      case SORT_OPTIONS.TITLE_DESC:
         return postsCopy.sort((a, b) => b.title.localeCompare(a.title));
       default:
         return postsCopy;
     }
   }, [posts, sortBy]);
+
+  // 處理排序變更，只需更新 URL（sortBy 會自動從 URL 計算）
+  const onSortChange = (newSort: SortOption) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (newSort === SORT_OPTIONS.DEFAULT) {
+      params.delete('sort'); // 預設值不顯示在 URL 中
+    } else {
+      params.set('sort', newSort);
+    }
+
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
 
   return (
     <main className={className}>
@@ -87,18 +115,22 @@ function BlogPage({ className }: BlogPageProps) {
           <div className="select-wrapper">
             <select
               className="select-input"
-              data-empty={sortBy === 'default'}
+              data-empty={sortBy === SORT_OPTIONS.DEFAULT}
               id="sort-select"
-              onChange={(e) => setSortBy(e.target.value as SortOption)}
+              onChange={(e) => onSortChange(e.target.value as SortOption)}
               value={sortBy}
             >
-              <option value="default"></option>
-              <option value="updatedAt-desc">最後編輯（最新）</option>
-              <option value="updatedAt-asc">最後編輯（最舊）</option>
-              <option value="createdAt-desc">發布時間（最新）</option>
-              <option value="createdAt-asc">發布時間（最舊）</option>
-              <option value="title-asc">標題（A-Z）</option>
-              <option value="title-desc">標題（Z-A）</option>
+              <option value={SORT_OPTIONS.DEFAULT}></option>
+              <option value={SORT_OPTIONS.UPDATED_DESC}>
+                最後編輯（最新）
+              </option>
+              <option value={SORT_OPTIONS.UPDATED_ASC}>最後編輯（最舊）</option>
+              <option value={SORT_OPTIONS.CREATED_DESC}>
+                發布時間（最新）
+              </option>
+              <option value={SORT_OPTIONS.CREATED_ASC}>發布時間（最舊）</option>
+              <option value={SORT_OPTIONS.TITLE_ASC}>標題（A-Z）</option>
+              <option value={SORT_OPTIONS.TITLE_DESC}>標題（Z-A）</option>
             </select>
             <label className="select-label" htmlFor="sort-select">
               排序方式
