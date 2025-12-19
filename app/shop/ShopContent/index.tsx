@@ -5,8 +5,9 @@ import styled from 'styled-components';
 
 import ProductFilter from '@/features/shop/ProductFilter';
 import ProductGrid from '@/features/shop/ProductGrid';
+import { fetchTopLevelCategories } from '@/lib/api/category';
 import { fetchProducts } from '@/lib/api/products';
-import type { Product } from '@/types';
+import type { Product, ShopCategory } from '@/types';
 
 import style from './style';
 
@@ -16,27 +17,53 @@ interface ShopContentProps {
 
 function ShopContent({ className }: ShopContentProps) {
   const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<ShopCategory[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
   useEffect(() => {
-    fetchProducts()
-      .then((data) => {
-        setProducts(data);
+    Promise.all([fetchProducts(), fetchTopLevelCategories()])
+      .then(([productsData, categoriesData]) => {
+        setProducts(productsData);
+        setCategories(categoriesData);
       })
       .catch((error) => {
-        console.error('Failed to fetch products:', error);
+        console.error('Failed to fetch data:', error);
         setProducts([]);
+        setCategories([]);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
 
-  const filteredProducts =
-    selectedCategory === 'all'
-      ? products
-      : products.filter((p) => p.category === selectedCategory);
+  // 根據選擇的分類篩選產品
+  const filteredProducts = (() => {
+    if (selectedCategory === null) {
+      return products;
+    }
+
+    // 檢查是否為頂層分類
+    const topLevelCategory = categories.find(
+      (category) => category.id === selectedCategory
+    );
+
+    if (topLevelCategory && topLevelCategory.children.length > 0) {
+      // 如果是頂層分類，篩選出所有子分類的產品
+      const childCategoryIds = topLevelCategory.children.map(
+        (child) => child.id
+      );
+      return products.filter(
+        (product) =>
+          product.categoryId !== null && childCategoryIds.includes(p.categoryId)
+      );
+    }
+
+    // 如果是子分類，直接篩選
+    return products.filter(
+      (product) => product.categoryId === selectedCategory
+    );
+  })();
 
   return (
     <main className={className}>
