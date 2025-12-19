@@ -6,6 +6,7 @@ export default css`
   .clock-container {
     width: 50px;
     height: 50px;
+    margin: 0 4px;
   }
 
   .clock-face {
