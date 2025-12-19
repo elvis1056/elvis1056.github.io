@@ -73,6 +73,50 @@ export default css`
     flex: 1;
   }
 
+  .expand-icon {
+    font-size: 0.75rem;
+    color: ${theme.colors.neutral.gray500};
+    transition: transform 0.2s ease;
+  }
+
+  .loading-text {
+    color: ${theme.colors.neutral.gray600};
+    text-align: center;
+    padding: 1rem;
+  }
+
+  /* 子分類列表 */
+  .subcategory-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .category-item {
+      padding-left: 2.5rem;
+      font-size: 0.875rem;
+      background: ${theme.colors.neutral.gray50};
+
+      &:hover {
+        background: ${theme.colors.neutral.gray100};
+      }
+
+      &.active {
+        background: ${theme.colors.primary.light};
+        color: ${theme.colors.primary.main};
+        font-weight: 500;
+      }
+    }
+
+    .product-count {
+      font-size: 0.75rem;
+      color: ${theme.colors.neutral.gray500};
+      margin-left: 0.5rem;
+    }
+  }
+
   /* Tablet & Mobile - 改為水平滾動 */
   @media (max-width: ${theme.breakpoints.tablet}) {
     width: 100%;
