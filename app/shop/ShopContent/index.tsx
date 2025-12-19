@@ -55,7 +55,8 @@ function ShopContent({ className }: ShopContentProps) {
       );
       return products.filter(
         (product) =>
-          product.categoryId !== null && childCategoryIds.includes(p.categoryId)
+          product.categoryId !== null &&
+          childCategoryIds.includes(product.categoryId)
       );
     }
 
