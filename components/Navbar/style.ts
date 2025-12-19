@@ -63,7 +63,6 @@ export default css`
       .nav-right {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
 
         /* Nav Links */
         .nav-links {

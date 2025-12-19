@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import CartButton from '@/components/CartButton';
 import Clock from '@/components/Clock';
 import { Logo } from '@/components/Logo';
 import { logout as logoutApi } from '@/lib/api/auth';
@@ -84,6 +85,9 @@ function Navbar({ className }: { className?: string }) {
               })}
             </ul>
 
+            {/* 購物車按鈕 */}
+            <CartButton />
+
             <div className="auth-section">
               {mounted && (
                 <>
@@ -96,7 +100,7 @@ function Navbar({ className }: { className?: string }) {
                     </>
                   ) : (
                     <Link className="auth-link" href="/login">
-                      登入/註冊
+                      登入
                     </Link>
                   )}
                 </>
@@ -171,7 +175,7 @@ function Navbar({ className }: { className?: string }) {
                         href="/login"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        登入/註冊
+                        登入
                       </Link>
                     )}
                   </>
