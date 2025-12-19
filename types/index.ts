@@ -14,3 +14,15 @@ export type {
   User,
   AuthError,
 } from './auth';
+export type {
+  Category as ShopCategory,
+  CategoryChild,
+  CategoryRequest,
+  CategoryTree,
+} from './category';
+export type {
+  Cart,
+  CartItem,
+  AddToCartRequest,
+  UpdateCartItemRequest,
+} from './cart';

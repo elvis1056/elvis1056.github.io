@@ -1,8 +1,14 @@
 import { assetPath } from '@/lib/utils/asset-path';
 import type { Product } from '@/types';
 
-// 🔥 假資料 - 之後改成真實 API
+import { apiClient } from './client';
+
 export async function fetchProducts(): Promise<Product[]> {
+  return apiClient.get<Product[]>('/api/products');
+}
+
+// 🔥 假資料 - 之後改成真實 API
+export async function fetchFakeProducts(): Promise<Product[]> {
   // 模擬網路延遲
   await new Promise((resolve) => setTimeout(resolve, 500));
 
@@ -109,23 +115,44 @@ export async function fetchProducts(): Promise<Product[]> {
 }
 
 export async function fetchProductById(id: number): Promise<Product> {
-  const products = await fetchProducts();
-  const product = products.find((p) => p.id === id);
-
-  if (!product) {
-    throw new Error('Product not found');
-  }
-
-  return product;
+  return apiClient.get<Product>(`/api/products/${id}`);
 }
 
-// 🔧 之後改成這樣（真實 API）：
-// export async function fetchProducts(): Promise<Product[]> {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products`);
-//   if (!res.ok) {
-//     const error = new Error(`Failed to fetch products: ${res.status}`);
-//     (error as any).status = res.status;
-//     throw error;
-//   }
-//   return res.json();
-// }
+/**
+ * 查詢特定分類的產品
+ */
+export async function fetchProductsByCategory(
+  categoryId: number
+): Promise<Product[]> {
+  return apiClient.get<Product[]>(`/api/categories/${categoryId}/products`);
+}
+
+/**
+ * 創建產品（ADMIN only）
+ */
+export async function createProduct(data: Partial<Product>): Promise<Product> {
+  return apiClient.post<Product>('/api/products', data, {
+    requiresAuth: true,
+  });
+}
+
+/**
+ * 更新產品（ADMIN only）
+ */
+export async function updateProduct(
+  id: number,
+  data: Partial<Product>
+): Promise<Product> {
+  return apiClient.put<Product>(`/api/products/${id}`, data, {
+    requiresAuth: true,
+  });
+}
+
+/**
+ * 刪除產品（ADMIN only）
+ */
+export async function deleteProduct(id: number): Promise<void> {
+  return apiClient.delete<void>(`/api/products/${id}`, {
+    requiresAuth: true,
+  });
+}
