@@ -119,14 +119,38 @@ export default css`
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
+    white-space: nowrap;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background: ${theme.colors.primary.dark};
       transform: scale(1.05);
     }
 
-    &:active {
+    &:active:not(:disabled) {
       transform: scale(0.98);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    /* 已加入成功狀態 */
+    &.added {
+      background: ${theme.colors.success};
+      animation: success-pulse 0.5s ease;
+    }
+
+    @keyframes success-pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
   }
 
