@@ -172,10 +172,13 @@ export default css`
   }
 
   .checkout-btn {
+    display: block;
     width: 100%;
     padding: 1rem;
     background: ${theme.colors.primary.main};
     color: ${theme.colors.neutral.white};
+    text-decoration: none;
+    text-align: center;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
@@ -209,25 +212,94 @@ export default css`
     }
   }
 
+  /* 手機版固定底部結帳區（桌機隱藏） */
+  .mobile-checkout-bar {
+    display: none;
+  }
+
   /* Tablet */
   @media (max-width: ${theme.breakpoints.tablet}) {
+    padding-bottom: 100px; /* 為固定底部留出空間 */
+
     .cart-layout {
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
 
+    /* 桌機版結帳區塊隱藏結帳按鈕 */
     .cart-summary {
       position: static;
+
+      .checkout-btn {
+        display: none;
+      }
     }
 
     .cart-title {
       font-size: 1.5rem;
     }
+
+    /* 顯示手機版固定底部結帳區 */
+    .mobile-checkout-bar {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: ${theme.colors.neutral.white};
+      padding: 1rem;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+      z-index: ${theme.zIndex.dropdown};
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .mobile-checkout-total {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .mobile-total-label {
+      font-size: 0.875rem;
+      color: ${theme.colors.neutral.gray600};
+    }
+
+    .mobile-total-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: ${theme.colors.primary.main};
+    }
+
+    .mobile-checkout-btn {
+      display: block;
+      flex-shrink: 0;
+      padding: 0.875rem 2rem;
+      background: ${theme.colors.primary.main};
+      color: ${theme.colors.neutral.white};
+      text-decoration: none;
+      text-align: center;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: ${theme.colors.primary.dark};
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
   }
 
   /* Mobile */
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1rem 0;
+    padding: 1rem 0 120px 0; /* 底部留出更多空間給固定結帳區 */
 
     .container {
       padding: 0 0.75rem;

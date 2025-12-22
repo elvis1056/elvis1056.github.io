@@ -125,12 +125,27 @@ function CartPageContent({ className }: CartPageContentProps) {
               </span>
             </div>
 
-            <button className="checkout-btn">前往結帳</button>
+            <Link className="checkout-btn" href="/checkout">
+              前往結帳
+            </Link>
 
             <Link className="continue-shopping-link" href="/shop">
               繼續購物
             </Link>
           </div>
+        </div>
+
+        {/* 手機版/平板固定底部結帳區 */}
+        <div className="mobile-checkout-bar">
+          <div className="mobile-checkout-total">
+            <span className="mobile-total-label">總計</span>
+            <span className="mobile-total-value">
+              NT$ {cart.totalAmount.toLocaleString()}
+            </span>
+          </div>
+          <Link className="mobile-checkout-btn" href="/checkout">
+            前往結帳
+          </Link>
         </div>
       </div>
     </div>
