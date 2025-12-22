@@ -214,7 +214,7 @@ export default css`
 
     .item-quantity {
       grid-column: 1 / 3;
-      justify-content: flex-start;
+      justify-content: flex-end;
     }
 
     .quantity-btn {
