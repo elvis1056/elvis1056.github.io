@@ -56,9 +56,5 @@ export default css`
     .empty-title {
       font-size: 1.25rem;
     }
-
-    .empty-description {
-      font-size: 0.9375rem;
-    }
   }
 `;
