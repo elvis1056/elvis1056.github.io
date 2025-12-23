@@ -43,19 +43,16 @@ export default css`
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-size: 0.9375rem;
     color: ${theme.colors.neutral.gray700};
     text-align: left;
 
     &:hover {
       background: ${theme.colors.neutral.gray100};
-      color: ${theme.colors.primary.main};
     }
 
     &.active {
       background: ${theme.colors.primary.main};
       color: ${theme.colors.neutral.white};
-      font-weight: 600;
 
       .category-icon {
         transform: scale(1.1);
@@ -74,9 +71,15 @@ export default css`
   }
 
   .expand-icon {
-    font-size: 0.75rem;
-    color: ${theme.colors.neutral.gray500};
+    width: 16px;
+    height: 16px;
+    transform: rotate(0deg); // 預設向下
     transition: transform 0.2s ease;
+    flex-shrink: 0;
+
+    &.expanded {
+      transform: rotate(90deg); // 展開時向上
+    }
   }
 
   .loading-text {

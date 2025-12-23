@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { fetchTopLevelCategories } from '@/lib/api/category';
+import { assetPath } from '@/lib/utils/asset-path';
 import type { ShopCategory } from '@/types';
 
 import style from './style';
@@ -93,9 +94,11 @@ function ProductFilter({
               >
                 <span className="category-name">{category.name}</span>
                 {category.children.length > 0 && (
-                  <span className="expand-icon">
-                    {expandedCategories.has(category.id) ? '▼' : '▶'}
-                  </span>
+                  <img
+                    alt="expand"
+                    className={`expand-icon ${expandedCategories.has(category.id) ? 'expanded' : ''}`}
+                    src={assetPath('/icons/chevron-right.svg')}
+                  />
                 )}
               </button>
 
