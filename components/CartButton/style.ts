@@ -66,7 +66,6 @@ export default css`
 
   /* 購物車文字 */
   .cart-text {
-    font-size: 0.9375rem;
     font-weight: 500;
     white-space: nowrap;
   }
