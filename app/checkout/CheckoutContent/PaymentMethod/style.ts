@@ -96,7 +96,6 @@ export default css`
 
     p {
       margin: 0;
-      font-size: 0.9375rem;
       color: ${theme.colors.neutral.gray700};
       line-height: 1.6;
     }
@@ -140,10 +139,6 @@ export default css`
 
     .payment-icon {
       font-size: 1.5rem;
-    }
-
-    .payment-title {
-      font-size: 0.9375rem;
     }
 
     .payment-description {

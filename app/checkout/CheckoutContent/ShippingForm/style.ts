@@ -41,7 +41,6 @@ export default css`
   /* 表單標籤 */
   .form-label {
     display: block;
-    font-size: 0.9375rem;
     font-weight: 600;
     color: ${theme.colors.neutral.gray700};
     margin-bottom: 0.5rem;
@@ -148,7 +147,6 @@ export default css`
     }
 
     span {
-      font-size: 0.9375rem;
       color: ${theme.colors.neutral.gray700};
     }
   }
@@ -195,15 +193,10 @@ export default css`
     .form-select,
     .form-textarea {
       padding: 0.625rem 0.875rem;
-      font-size: 0.9375rem;
     }
 
     .radio-option {
       padding: 0.75rem;
-
-      span {
-        font-size: 0.9375rem;
-      }
     }
   }
 `;

@@ -84,7 +84,6 @@ export default css`
   }
 
   .item-name {
-    font-size: 0.9375rem;
     font-weight: 600;
     color: ${theme.colors.neutral.gray900};
     margin-bottom: 0.25rem;
@@ -99,7 +98,6 @@ export default css`
   }
 
   .item-price {
-    font-size: 0.9375rem;
     font-weight: 600;
     color: ${theme.colors.neutral.gray900};
     white-space: nowrap;
@@ -141,7 +139,6 @@ export default css`
   }
 
   .price-label {
-    font-size: 0.9375rem;
     color: ${theme.colors.neutral.gray600};
   }
 

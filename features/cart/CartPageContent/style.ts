@@ -155,12 +155,10 @@ export default css`
   }
 
   .summary-label {
-    font-size: 0.9375rem;
     color: ${theme.colors.neutral.gray600};
   }
 
   .summary-value {
-    font-size: 0.9375rem;
     font-weight: 600;
     color: ${theme.colors.neutral.gray900};
   }
@@ -203,7 +201,6 @@ export default css`
     margin-top: 1rem;
     color: ${theme.colors.primary.main};
     text-decoration: none;
-    font-size: 0.9375rem;
     font-weight: 500;
     transition: all 0.2s ease;
 
