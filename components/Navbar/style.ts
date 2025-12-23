@@ -352,7 +352,6 @@ export default css`
 
           .mobile-nav-link {
             padding: 0.75rem 0.875rem;
-            font-size: 0.9375rem;
           }
         }
       }
