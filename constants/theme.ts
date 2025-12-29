@@ -121,6 +121,7 @@ export const zIndex = {
   modal: 200,
   modalBackdrop: 199,
   notification: 300,
+  overlay: 1000,
 } as const;
 
 export const theme = {
