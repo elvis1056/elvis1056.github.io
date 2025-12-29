@@ -1,44 +1,29 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
-import { fetchTopLevelCategories } from '@/lib/api/category';
 import { assetPath } from '@/lib/utils/asset-path';
 import type { ShopCategory } from '@/types';
 
 import style from './style';
 
-interface ProductFilterProps {
+interface DesktopFilterProps {
+  categories: ShopCategory[];
   selectedCategory: number | null;
   onCategoryChange: (categoryId: number | null) => void;
   className?: string;
 }
 
-function ProductFilter({
+function DesktopFilter({
+  categories,
   selectedCategory,
   onCategoryChange,
   className,
-}: ProductFilterProps) {
-  const [categories, setCategories] = useState<ShopCategory[]>([]);
-  const [loading, setLoading] = useState(true);
+}: DesktopFilterProps) {
   const [expandedCategories, setExpandedCategories] = useState<Set<number>>(
     new Set()
   );
-
-  useEffect(() => {
-    fetchTopLevelCategories()
-      .then((data) => {
-        setCategories(data);
-      })
-      .catch((error) => {
-        console.error('Failed to fetch categories:', error);
-        setCategories([]);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
 
   const toggleCategory = (categoryId: number) => {
     setExpandedCategories((prev) => {
@@ -51,17 +36,6 @@ function ProductFilter({
       return next;
     });
   };
-
-  if (loading) {
-    return (
-      <div className={className}>
-        <div className="filter-container">
-          <h2 className="filter-title">商品分類</h2>
-          <p className="loading-text">載入中...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className={className}>
@@ -129,6 +103,8 @@ function ProductFilter({
   );
 }
 
-export default styled(ProductFilter)`
+DesktopFilter.displayName = 'DesktopFilter';
+
+export default styled(DesktopFilter)`
   ${style}
 `;
