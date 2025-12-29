@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -76,7 +77,7 @@ function DesktopFilter({
                     <span className="category-name">{category.name}</span>
                   </button>
                   {hasChildren && (
-                    <img
+                    <Image
                       alt="expand"
                       className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
                       onClick={() => toggleExpanded(category.id)}
