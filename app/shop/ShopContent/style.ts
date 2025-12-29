@@ -37,8 +37,12 @@ export default css`
     gap: 2rem;
   }
 
-  .filter-sidebar {
-    /* ProductFilter component handles its own styling */
+  .desktop-filter {
+    /* DesktopFilter component handles its own styling */
+  }
+
+  .mobile-filter {
+    display: none;
   }
 
   .products-area {
@@ -62,7 +66,7 @@ export default css`
     }
 
     .shop-header {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .shop-title {
@@ -77,7 +81,12 @@ export default css`
       display: block;
     }
 
-    .filter-sidebar {
+    .desktop-filter {
+      display: none;
+    }
+
+    .mobile-filter {
+      display: block;
       margin-bottom: 1.5rem;
     }
   }

@@ -1,9 +1,11 @@
 'use client';
 
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import ProductFilter from '@/features/shop/ProductFilter';
+import DesktopFilter from '@/features/shop/DesktopFilter';
+import MobileFilter from '@/features/shop/MobileFilter';
 import ProductGrid from '@/features/shop/ProductGrid';
 import { fetchTopLevelCategories } from '@/lib/api/category';
 import { fetchProducts } from '@/lib/api/products';
@@ -16,10 +18,23 @@ interface ShopContentProps {
 }
 
 function ShopContent({ className }: ShopContentProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<ShopCategory[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+
+  // 從 URL 讀取分類
+  useEffect(() => {
+    const categoryId = searchParams.get('category');
+    if (categoryId) {
+      setSelectedCategory(Number(categoryId));
+    } else {
+      setSelectedCategory(null);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     Promise.all([fetchProducts(), fetchTopLevelCategories()])
@@ -36,6 +51,17 @@ function ShopContent({ className }: ShopContentProps) {
         setLoading(false);
       });
   }, []);
+
+  // 處理分類變更並同步到 URL
+  const onCategoryChange = (categoryId: number | null) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (categoryId === null) {
+      params.delete('category');
+    } else {
+      params.set('category', categoryId.toString());
+    }
+    router.push(`/shop?${params.toString()}`);
+  };
 
   // 根據選擇的分類篩選產品
   const filteredProducts = (() => {
@@ -77,12 +103,23 @@ function ShopContent({ className }: ShopContentProps) {
         </header>
 
         <div className="shop-layout">
-          <aside className="filter-sidebar">
-            <ProductFilter
-              onCategoryChange={setSelectedCategory}
+          {/* 桌面版側邊欄 */}
+          <aside className="desktop-filter">
+            <DesktopFilter
+              categories={categories}
+              onCategoryChange={onCategoryChange}
               selectedCategory={selectedCategory}
             />
           </aside>
+
+          {/* 手機/平板版篩選 */}
+          <div className="mobile-filter">
+            <MobileFilter
+              categories={categories}
+              onCategoryChange={onCategoryChange}
+              selectedCategory={selectedCategory}
+            />
+          </div>
 
           <div className="products-area">
             {loading ? (
