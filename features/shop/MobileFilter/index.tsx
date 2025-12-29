@@ -38,18 +38,24 @@ function MobileFilter({
   );
 
   const onCategoryClick = (category: ShopCategory) => {
+    // 有子分類，開啟 Drawer
     if (category.children.length > 0) {
-      // 有子分類，開啟 Drawer
       setSelectedParent(category);
       setTempSelectedId(selectedCategory);
       drawerRef.current?.openModal();
-    } else {
-      // 沒有子分類，直接篩選
-      onCategoryChange(category.id);
+      return;
     }
+
+    // 沒有子分類，直接篩選（避免重複點擊）
+    if (selectedCategory === category.id) return;
+    onCategoryChange(category.id);
   };
 
   const onApply = () => {
+    if (tempSelectedId === selectedCategory) {
+      drawerRef.current?.closeModal();
+      return;
+    }
     onCategoryChange(tempSelectedId);
     drawerRef.current?.closeModal();
   };
@@ -73,7 +79,10 @@ function MobileFilter({
       <div className="category-scroll">
         <button
           className={`category-chip ${selectedCategory === null ? 'active' : ''}`}
-          onClick={() => onCategoryChange(null)}
+          onClick={() => {
+            if (selectedCategory === null) return;
+            onCategoryChange(null);
+          }}
         >
           全部商品
         </button>

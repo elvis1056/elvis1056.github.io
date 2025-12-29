@@ -47,7 +47,10 @@ function DesktopFilter({
           <li>
             <button
               className={`category-item ${selectedCategory === null ? 'active' : ''}`}
-              onClick={() => onCategoryChange(null)}
+              onClick={() => {
+                if (selectedCategory === null) return;
+                onCategoryChange(null);
+              }}
             >
               <span className="category-icon">🎈</span>
               <span className="category-name">全部商品</span>
@@ -60,10 +63,11 @@ function DesktopFilter({
               <button
                 className={`category-item ${selectedCategory === category.id ? 'active' : ''}`}
                 onClick={() => {
-                  onCategoryChange(category.id);
                   if (category.children.length > 0) {
                     toggleCategory(category.id);
                   }
+                  if (selectedCategory === category.id) return;
+                  onCategoryChange(category.id);
                 }}
               >
                 <span className="category-name">{category.name}</span>
@@ -84,7 +88,10 @@ function DesktopFilter({
                       <li key={child.id}>
                         <button
                           className={`category-item subcategory ${selectedCategory === child.id ? 'active' : ''}`}
-                          onClick={() => onCategoryChange(child.id)}
+                          onClick={() => {
+                            if (selectedCategory === child.id) return;
+                            onCategoryChange(child.id);
+                          }}
                         >
                           <span className="category-name">{child.name}</span>
                           <span className="product-count">
