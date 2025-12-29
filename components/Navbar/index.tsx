@@ -59,6 +59,11 @@ function Navbar({ className }: { className?: string }) {
     };
   }, [isMobileMenuOpen]);
 
+  // 隱藏 404 頁面的 Navbar
+  if (pathname === '/not-found') {
+    return null;
+  }
+
   return (
     <header className={className}>
       <div className={`navbar ${isMobileMenuOpen ? 'menu-open' : ''}`}>
