@@ -32,11 +32,18 @@ export default css`
     gap: 0.5rem;
   }
 
+  .category-item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .category-item {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    width: 100%;
+    flex: 1;
+    min-width: 0;
     padding: 0.875rem 1rem;
     border: none;
     background: transparent;
@@ -68,17 +75,27 @@ export default css`
 
   .category-name {
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .expand-icon {
     width: 16px;
     height: 16px;
-    transform: rotate(0deg); // 預設向下
+    transform: rotate(0deg);
     transition: transform 0.2s ease;
     flex-shrink: 0;
+    margin-left: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
 
     &.expanded {
-      transform: rotate(90deg); // 展開時向上
+      transform: rotate(90deg);
     }
   }
 
@@ -93,14 +110,19 @@ export default css`
     list-style: none;
     padding: 0;
     margin: 0.5rem 0 0 0;
+    padding-left: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 
     .category-item {
+      width: 100%;
       padding-left: 2.5rem;
       font-size: 0.875rem;
       background: ${theme.colors.neutral.gray50};
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       &:hover {
         background: ${theme.colors.neutral.gray100};

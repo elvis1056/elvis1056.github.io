@@ -25,7 +25,7 @@ function DesktopFilter({
     new Set()
   );
 
-  const toggleCategory = (categoryId: number) => {
+  const toggleExpanded = (categoryId: number) => {
     setExpandedCategories((prev) => {
       const next = new Set(prev);
       if (next.has(categoryId)) {
@@ -58,31 +58,35 @@ function DesktopFilter({
           </li>
 
           {/* 動態分類 */}
-          {categories.map((category) => (
-            <li key={category.id}>
-              <button
-                className={`category-item ${selectedCategory === category.id ? 'active' : ''}`}
-                onClick={() => {
-                  if (category.children.length > 0) {
-                    toggleCategory(category.id);
-                  }
-                  if (selectedCategory === category.id) return;
-                  onCategoryChange(category.id);
-                }}
-              >
-                <span className="category-name">{category.name}</span>
-                {category.children.length > 0 && (
-                  <img
-                    alt="expand"
-                    className={`expand-icon ${expandedCategories.has(category.id) ? 'expanded' : ''}`}
-                    src={assetPath('/icons/chevron-right.svg')}
-                  />
-                )}
-              </button>
+          {categories.map((category) => {
+            const hasChildren = category.children.length > 0;
+            const isExpanded = expandedCategories.has(category.id);
 
-              {/* 子分類 */}
-              {category.children.length > 0 &&
-                expandedCategories.has(category.id) && (
+            return (
+              <li key={category.id}>
+                <div className="category-item-wrapper">
+                  <button
+                    className={`category-item ${selectedCategory === category.id ? 'active' : ''}`}
+                    onClick={() => {
+                      if (selectedCategory === category.id) return;
+                      onCategoryChange(category.id);
+                    }}
+                    title={category.name}
+                  >
+                    <span className="category-name">{category.name}</span>
+                  </button>
+                  {hasChildren && (
+                    <img
+                      alt="expand"
+                      className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
+                      onClick={() => toggleExpanded(category.id)}
+                      src={assetPath('/icons/chevron-right.svg')}
+                    />
+                  )}
+                </div>
+
+                {/* 子分類 */}
+                {isExpanded && (
                   <ul className="subcategory-list">
                     {category.children.map((child) => (
                       <li key={child.id}>
@@ -92,6 +96,7 @@ function DesktopFilter({
                             if (selectedCategory === child.id) return;
                             onCategoryChange(child.id);
                           }}
+                          title={child.name}
                         >
                           <span className="category-name">{child.name}</span>
                           <span className="product-count">
@@ -102,8 +107,9 @@ function DesktopFilter({
                     ))}
                   </ul>
                 )}
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
