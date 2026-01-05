@@ -438,6 +438,25 @@ const postsMetadata = [
     createdAt: '2025-12-17T23:30:00Z',
     updatedAt: '2025-12-17T23:30:00Z',
   },
+  {
+    id: 27,
+    slug: 'interview-store-token',
+    title: '用戶登入後的 Token 該怎麼存？',
+    excerpt:
+      '深入探討前端 Token 儲存方案：LocalStorage、Cookie、內存與雙 Token 策略的安全性與使用體驗比較',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Security', slug: 'security' },
+      { id: 2, name: 'Authentication', slug: 'authentication' },
+      { id: 3, name: 'Frontend', slug: 'frontend' },
+      { id: 4, name: 'Interview', slug: 'interview' },
+      { id: 5, name: 'Token', slug: 'token' },
+    ],
+    createdAt: '2026-01-02T10:00:00Z',
+    updatedAt: '2026-01-02T10:00:00Z',
+  },
 ];
 
 // 🔥 動態載入文章內容
