@@ -457,6 +457,24 @@ const postsMetadata = [
     createdAt: '2026-01-02T10:00:00Z',
     updatedAt: '2026-01-02T10:00:00Z',
   },
+  {
+    id: 28,
+    slug: 'commands',
+    title: 'Linux/Docker 常用指令速查表',
+    excerpt: 'Port 管理、Process 控制、Java/Docker 開發常用指令完整整理',
+    author: 'Elvis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1629654297299-c8506221ca97?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070',
+    tags: [
+      { id: 1, name: 'Linux', slug: 'linux' },
+      { id: 2, name: 'Docker', slug: 'docker' },
+      { id: 3, name: 'Terminal', slug: 'terminal' },
+      { id: 4, name: 'DevOps', slug: 'devops' },
+      { id: 5, name: 'Commands', slug: 'commands' },
+    ],
+    createdAt: '2026-01-02T11:00:00Z',
+    updatedAt: '2026-01-02T11:00:00Z',
+  },
 ];
 
 // 🔥 動態載入文章內容
