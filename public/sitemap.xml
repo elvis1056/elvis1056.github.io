@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- 首頁 -->
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/</loc>
+    <loc>https://elvis1056.github.io/</loc>
     <lastmod>2025-11-24T23:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
@@ -10,7 +10,7 @@
 
   <!-- About 頁面 -->
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/about</loc>
+    <loc>https://elvis1056.github.io/about</loc>
     <lastmod>2025-11-24T23:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
@@ -18,7 +18,7 @@
 
   <!-- Shop 頁面 -->
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/shop</loc>
+    <loc>https://elvis1056.github.io/shop</loc>
     <lastmod>2025-11-24T23:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.80</priority>
@@ -26,7 +26,7 @@
 
   <!-- Blog 列表頁 -->
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog</loc>
+    <loc>https://elvis1056.github.io/blog</loc>
     <lastmod>2025-11-24T23:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.80</priority>
@@ -34,196 +34,196 @@
 
   <!-- Blog 文章 -->
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/fix-zsh-command-not-found</loc>
+    <loc>https://elvis1056.github.io/blog/fix-zsh-command-not-found</loc>
     <lastmod>2025-01-26T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/what-is-mvc-mvvm</loc>
+    <loc>https://elvis1056.github.io/blog/what-is-mvc-mvvm</loc>
     <lastmod>2025-01-27T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/Lombok-Builder</loc>
+    <loc>https://elvis1056.github.io/blog/Lombok-Builder</loc>
     <lastmod>2025-11-03T11:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/database-normalization</loc>
+    <loc>https://elvis1056.github.io/blog/database-normalization</loc>
     <lastmod>2025-11-06T13:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/database-normalization-1nf</loc>
+    <loc>https://elvis1056.github.io/blog/database-normalization-1nf</loc>
     <lastmod>2025-11-06T13:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/database-normalization-2nf</loc>
+    <loc>https://elvis1056.github.io/blog/database-normalization-2nf</loc>
     <lastmod>2025-11-07T11:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/database-normalization-3nf</loc>
+    <loc>https://elvis1056.github.io/blog/database-normalization-3nf</loc>
     <lastmod>2025-11-07T12:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/extra-language</loc>
+    <loc>https://elvis1056.github.io/blog/extra-language</loc>
     <lastmod>2025-11-11T14:34:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/about-oop</loc>
+    <loc>https://elvis1056.github.io/blog/about-oop</loc>
     <lastmod>2025-11-11T14:34:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/render-deploy-postgresql</loc>
+    <loc>https://elvis1056.github.io/blog/render-deploy-postgresql</loc>
     <lastmod>2025-11-13T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/twitch-workers-example-1</loc>
+    <loc>https://elvis1056.github.io/blog/twitch-workers-example-1</loc>
     <lastmod>2025-11-20T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/twitch-workers-example-2</loc>
+    <loc>https://elvis1056.github.io/blog/twitch-workers-example-2</loc>
     <lastmod>2025-11-20T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/key-considerations-for-java-dockerfile-configuration-ep1</loc>
+    <loc>https://elvis1056.github.io/blog/key-considerations-for-java-dockerfile-configuration-ep1</loc>
     <lastmod>2025-11-24T23:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/key-considerations-for-java-dockerfile-configuration-ep2</loc>
+    <loc>https://elvis1056.github.io/blog/key-considerations-for-java-dockerfile-configuration-ep2</loc>
     <lastmod>2025-11-24T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/docker-something</loc>
+    <loc>https://elvis1056.github.io/blog/docker-something</loc>
     <lastmod>2025-11-28T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/java-env-setting</loc>
+    <loc>https://elvis1056.github.io/blog/java-env-setting</loc>
     <lastmod>2025-11-29T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/java-local-docker-production</loc>
+    <loc>https://elvis1056.github.io/blog/java-local-docker-production</loc>
     <lastmod>2025-11-30T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/software-engineer-interview</loc>
+    <loc>https://elvis1056.github.io/blog/software-engineer-interview</loc>
     <lastmod>2025-12-01T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/vm-free-google-cloud</loc>
+    <loc>https://elvis1056.github.io/blog/vm-free-google-cloud</loc>
     <lastmod>2025-12-02T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/java-create-categories-thinking-process</loc>
+    <loc>https://elvis1056.github.io/blog/java-create-categories-thinking-process</loc>
     <lastmod>2025-12-03T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/java-new-member</loc>
+    <loc>https://elvis1056.github.io/blog/java-new-member</loc>
     <lastmod>2025-12-04T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/java-new-member-entity</loc>
+    <loc>https://elvis1056.github.io/blog/java-new-member-entity</loc>
     <lastmod>2025-12-05T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/java-securityfilterchain</loc>
+    <loc>https://elvis1056.github.io/blog/java-securityfilterchain</loc>
     <lastmod>2025-12-06T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/java-thinking-and-making-decisions</loc>
+    <loc>https://elvis1056.github.io/blog/java-thinking-and-making-decisions</loc>
     <lastmod>2025-12-07T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/java-verify-database-step</loc>
+    <loc>https://elvis1056.github.io/blog/java-verify-database-step</loc>
     <lastmod>2025-12-08T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/java-create-cart</loc>
+    <loc>https://elvis1056.github.io/blog/java-create-cart</loc>
     <lastmod>2025-12-17T23:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/interview-store-token</loc>
+    <loc>https://elvis1056.github.io/blog/interview-store-token</loc>
     <lastmod>2026-01-02T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://elvis1056.github.io/5dpapa/blog/commands</loc>
+    <loc>https://elvis1056.github.io/blog/commands</loc>
     <lastmod>2026-01-02T11:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.60</priority>

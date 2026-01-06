@@ -99,8 +99,7 @@ function BlogPostContent({ className, post }: BlogPostContentProps) {
                 );
               },
               img({ src, alt }) {
-                const basePath =
-                  process.env.ENV === 'production' ? '/5dpapa' : '/5dpapa';
+                const basePath = ''; // 移除 /5dpapa，部署到根路徑
                 const imageSrc = src?.startsWith('/')
                   ? `${basePath}${src}`
                   : src;

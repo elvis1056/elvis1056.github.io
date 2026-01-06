@@ -150,7 +150,7 @@ export default css`
       .head {
         height: 100%;
         width: 100%;
-        background: url('/5dpapa/images/about/headshot.jpeg');
+        background: url('/images/about/headshot.jpeg');
         background-size: cover;
       }
     }

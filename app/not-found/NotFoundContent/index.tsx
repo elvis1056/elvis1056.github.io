@@ -32,23 +32,23 @@ function NotFoundContent({ className }: NotFoundContentProps) {
         </div>
 
         <div className="actions">
-          <Link className="primary-button" href="/5dpapa/">
+          <Link className="primary-button" href="/">
             返回首頁
           </Link>
-          <Link className="secondary-button" href="/5dpapa/shop">
+          <Link className="secondary-button" href="/shop">
             前往商城
           </Link>
         </div>
 
         <p className="hint">或許你想要...</p>
         <div className="quick-links">
-          <Link className="quick-link" href="/5dpapa/shop">
+          <Link className="quick-link" href="/shop">
             瀏覽商品
           </Link>
-          <Link className="quick-link" href="/5dpapa/cart">
+          <Link className="quick-link" href="/cart">
             查看購物車
           </Link>
-          <Link className="quick-link" href="/5dpapa/about">
+          <Link className="quick-link" href="/about">
             關於我們
           </Link>
         </div>
