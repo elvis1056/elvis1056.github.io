@@ -81,6 +81,12 @@ export default css`
     white-space: nowrap;
   }
 
+  .expand-wrapper {
+    position: relative;
+    width: 16px;
+    height: 16px;
+  }
+
   .expand-icon {
     width: 16px;
     height: 16px;

@@ -77,12 +77,15 @@ function DesktopFilter({
                     <span className="category-name">{category.name}</span>
                   </button>
                   {hasChildren && (
-                    <Image
-                      alt="expand"
-                      className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
-                      onClick={() => toggleExpanded(category.id)}
-                      src={assetPath('/icons/chevron-right.svg')}
-                    />
+                    <div className="expand-wrapper">
+                      <Image
+                        alt="expand"
+                        className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
+                        fill
+                        onClick={() => toggleExpanded(category.id)}
+                        src={assetPath('/icons/chevron-right.svg')}
+                      />
+                    </div>
                   )}
                 </div>
 
