@@ -46,16 +46,18 @@ function DesktopFilter({
         <ul className="category-list">
           {/* 全部商品選項 */}
           <li>
-            <button
-              className={`category-item ${selectedCategory === null ? 'active' : ''}`}
-              onClick={() => {
-                if (selectedCategory === null) return;
-                onCategoryChange(null);
-              }}
-            >
-              <span className="category-icon">🎈</span>
-              <span className="category-name">全部商品</span>
-            </button>
+            <div className="category-item-wrapper">
+              <button
+                className={`category-item ${selectedCategory === null ? 'active' : ''}`}
+                onClick={() => {
+                  if (selectedCategory === null) return;
+                  onCategoryChange(null);
+                }}
+              >
+                {/* <span className="category-icon">🎈</span> */}
+                <span className="category-name">全部商品</span>
+              </button>
+            </div>
           </li>
 
           {/* 動態分類 */}

@@ -35,7 +35,6 @@ export default css`
   .category-item-wrapper {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
   }
 
   .category-item {
@@ -93,7 +92,6 @@ export default css`
     transform: rotate(0deg);
     transition: transform 0.2s ease;
     flex-shrink: 0;
-    margin-left: 0.5rem;
     cursor: pointer;
 
     &:hover {
