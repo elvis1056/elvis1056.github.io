@@ -107,7 +107,7 @@ const pageStyle = css`
     transform: translateY(0) scale(0.75);
     font-size: 12px;
     padding: 0 4px;
-    background-color: #f5e6d3;
+    background-color: ${theme.colors.background.default};
   }
 
   .select-input:focus ~ .select-label {
@@ -117,7 +117,7 @@ const pageStyle = css`
     transform: translateY(0) scale(0.75);
     font-size: 12px;
     padding: 0 4px;
-    background-color: #f5e6d3;
+    background-color: ${theme.colors.background.default};
   }
 
   .dropdown-icon {
@@ -201,7 +201,7 @@ const pageStyle = css`
       top: -7px;
       transform: translateY(0) scale(0.75);
       padding: 0 4px;
-      background-color: #f5e6d3;
+      background-color: ${theme.colors.background.default};
     }
 
     .select-input:focus ~ .select-label {
@@ -210,7 +210,7 @@ const pageStyle = css`
       top: -7px;
       transform: translateY(0) scale(0.75);
       padding: 0 4px;
-      background-color: #f5e6d3;
+      background-color: ${theme.colors.background.default};
     }
 
     .dropdown-icon {
@@ -247,31 +247,31 @@ const pageStyle = css`
       padding: 12px 44px 12px 12px;
     }
 
-    .select-label {
-      font-size: 14px !important;
-      left: 12px !important;
-      top: 50% !important;
-      transform: translateY(-50%) !important;
-      padding: 0 !important;
-      background-color: transparent !important;
+    .select-wrapper .select-label {
+      font-size: 14px;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0;
+      background-color: transparent;
     }
 
-    .select-input[data-empty='false'] ~ .select-label {
-      font-size: 10px !important;
-      left: 8px !important;
-      top: -7px !important;
-      transform: translateY(0) scale(0.75) !important;
-      padding: 0 4px !important;
-      background-color: #f5e6d3 !important;
+    .select-wrapper .select-input[data-empty='false'] ~ .select-label {
+      font-size: 10px;
+      left: 8px;
+      top: -7px;
+      transform: translateY(0) scale(0.75);
+      padding: 0 4px;
+      background-color: ${theme.colors.background.default};
     }
 
-    .select-input:focus ~ .select-label {
-      font-size: 10px !important;
-      left: 8px !important;
-      top: -7px !important;
-      transform: translateY(0) scale(0.75) !important;
-      padding: 0 4px !important;
-      background-color: #f5e6d3 !important;
+    .select-wrapper .select-input:focus ~ .select-label {
+      font-size: 10px;
+      left: 8px;
+      top: -7px;
+      transform: translateY(0) scale(0.75);
+      padding: 0 4px;
+      background-color: ${theme.colors.background.default};
     }
 
     .dropdown-icon {

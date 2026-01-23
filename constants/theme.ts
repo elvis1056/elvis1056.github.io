@@ -1,43 +1,43 @@
 export const colors = {
-  // Primary - 深橄欖綠系列（自然、專業、沉穩）
+  // Primary - Apple 經典藍系列（信賴、專業、科技感）
   primary: {
-    main: '#6B7F5C', // 深橄欖綠
-    light: '#8FA17D', // 淺橄欖綠
-    dark: '#4D5E42', // 深綠
-    50: '#f4f6f2', // 最淺（淡綠白）
-    100: '#e8ede4', // 很淺
-    200: '#8FA17D', // 淺色
-    300: '#6B7F5C', // 主色
-    400: '#4D5E42', // 深色
-    500: '#3A4833', // 最深
+    main: '#0071E3', // Apple 經典藍
+    light: '#0077ED', // 淺藍（Hover 狀態）
+    dark: '#006EDB', // 深藍（Active 狀態）
+    50: '#E6F2FF', // 最淺藍白
+    100: '#CCE5FF', // 很淺藍
+    200: '#99CBFF', // 淺藍
+    300: '#0071E3', // 主色
+    400: '#006EDB', // 深藍
+    500: '#0062CC', // 最深藍
   },
 
-  // Secondary - 金棕色系列（溫暖、奢華）
+  // Secondary - Apple 深灰系列（專業、穩重）
   secondary: {
-    main: '#9B764F', // 金棕色
-    light: '#B89470', // 淺金棕
-    dark: '#7A5D3F', // 深棕
+    main: '#86868B', // Apple 次要灰
+    light: '#A1A1A6', // 淺灰
+    dark: '#6E6E73', // 深灰
   },
 
-  // Accent - 金色點綴
+  // Accent - Apple 橙色點綴（活力、引導）
   accent: {
-    main: '#D4AF37', // 金色
-    light: '#E5C56B', // 淺金
-    dark: '#B8942A', // 深金
+    main: '#F56300', // Apple 橙色
+    light: '#FF7A1F', // 淺橙
+    dark: '#D45500', // 深橙
   },
 
-  // Neutral - 中性色
+  // Neutral - Apple 中性色系
   neutral: {
-    white: '#fefefe',
-    gray50: '#f9fafb',
-    gray100: '#f3f4f6',
-    gray200: '#e5e7eb',
-    gray300: '#d1d5db',
-    gray400: '#9ca3af',
-    gray500: '#6b7280',
-    gray600: '#4b5563',
-    gray700: '#374151',
-    gray900: '#111827',
+    white: '#FFFFFF',
+    gray50: '#FAFAFA',
+    gray100: '#F5F5F7',
+    gray200: '#E8E8ED',
+    gray300: '#D2D2D7',
+    gray400: '#AEAEB2',
+    gray500: '#86868B',
+    gray600: '#6E6E73',
+    gray700: '#515154',
+    gray900: '#1D1D1F',
     black: '#000000',
   },
 
@@ -45,27 +45,27 @@ export const colors = {
   success: '#10b981',
   warning: '#f59e0b',
   error: '#ef4444',
-  info: '#3b82f6',
+  info: '#0071E3', // 使用 Apple 藍作為 info 色
 
   // Background
   background: {
-    default: '#f5e6d3', // 淺米黃紙質色
-    paper: '#faf6f0', // 卡片背景稍亮一點
-    hover: '#ebe1d0', // hover 稍深一點
+    default: '#F5F5F7', // Apple 淺灰背景
+    paper: '#FFFFFF', // 純白卡片
+    hover: '#FAFAFA', // hover 稍微變色
   },
 
   // Border
   border: {
-    light: '#e8ede4', // 淺綠白
-    main: '#8FA17D', // 淺橄欖綠
-    dark: '#6B7F5C', // 深橄欖綠
+    light: '#E8E8ED', // 很淺灰邊框
+    main: '#D2D2D7', // Apple 標準邊框
+    dark: '#AEAEB2', // 深灰邊框
   },
 
   // Text
   text: {
-    primary: '#000000', // 主要文字：黑色
-    secondary: '#374151', // 次要文字：深灰
-    disabled: '#9ca3af', // 禁用文字：淺灰
+    primary: '#1D1D1F', // Apple 主要文字：深灰黑
+    secondary: '#86868B', // Apple 次要文字：中灰
+    disabled: '#AEAEB2', // 禁用文字：淺灰
   },
 } as const;
 
@@ -108,9 +108,9 @@ export const breakpoints = {
 } as const;
 
 export const shadows = {
-  sm: '0 1px 2px rgba(107, 127, 92, 0.06)', // 深橄欖綠陰影
-  md: '0 2px 8px rgba(107, 127, 92, 0.1)',
-  lg: '0 4px 16px rgba(107, 127, 92, 0.15)',
+  sm: '0 1px 2px rgba(0, 0, 0, 0.06)', // Apple 風格陰影
+  md: '0 2px 8px rgba(0, 0, 0, 0.1)',
+  lg: '0 4px 16px rgba(0, 0, 0, 0.15)',
 } as const;
 
 export const zIndex = {
