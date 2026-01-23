@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -49,15 +50,17 @@ function PillContent({ className }: PillContentProps) {
         <div className={`rows ${!expanded ? 'collapse' : ''}`}>
           {displayItems.map((item, index) => (
             <div className="row-wrapper" key={index}>
-              <img
+              <Image
                 alt="checkbox"
                 className="checkbox"
+                height={24}
                 onClick={() => toggleItem(item.title)}
                 src={assetPath(
                   selectedItems.includes(item.title)
                     ? '/icons/checkbox-checked.svg'
                     : '/icons/checkbox-unchecked.svg'
                 )}
+                width={24}
               />
               <div
                 className={`row ${selectedItems.includes(item.title) ? 'selected' : ''}`}
