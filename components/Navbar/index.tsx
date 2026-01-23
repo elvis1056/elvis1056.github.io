@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import CartButton from '@/components/CartButton';
-import Clock from '@/components/Clock';
+// import Clock from '@/components/Clock';
 import { Logo } from '@/components/Logo';
 import { logout as logoutApi } from '@/lib/api/auth';
 import { csrfManager } from '@/lib/security/csrfManager';
@@ -112,9 +112,9 @@ function Navbar({ className }: { className?: string }) {
               )}
             </div>
 
-            <div className="nav-clock">
+            {/* <div className="nav-clock">
               <Clock />
-            </div>
+            </div> */}
           </div>
 
           <button

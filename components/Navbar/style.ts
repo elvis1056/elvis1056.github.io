@@ -33,7 +33,6 @@ export default css`
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
