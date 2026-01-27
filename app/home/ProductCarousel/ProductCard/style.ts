@@ -21,7 +21,6 @@ const style = css`
   .card-container {
     background: ${theme.colors.background.paper};
     border-radius: 12px;
-    border: 1px solid ${theme.colors.primary[100]};
     overflow: hidden;
     transition: all 0.2s ease;
     box-shadow: ${theme.shadows.sm};
