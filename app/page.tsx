@@ -54,6 +54,22 @@ const sampleProducts = [
     tags: ['購物車', '購物車品項'],
     href: 'https://www.buy123.com.tw/site/sku/2156552',
   },
+  {
+    id: '7',
+    title: '電商購物車',
+    image: '/images/resume/banner-7.png',
+    subtitle: '電商購物車',
+    tags: ['加入購物車'],
+    href: 'https://www.buy123.com.tw/site/sku/2156552',
+  },
+  {
+    id: '8',
+    title: '仿 Twitch 平台',
+    image: '/images/resume/banner-8.png',
+    subtitle: '直播串流',
+    tags: ['直播', '串接'],
+    href: 'https://elvis1056.github.io/twitchApi/',
+  },
 ];
 
 export default function Home() {
