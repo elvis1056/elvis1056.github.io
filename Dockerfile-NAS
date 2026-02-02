@@ -1,0 +1,79 @@
+# ===== Stage 1: 安裝依賴 =====
+# 使用 Alpine Linux（輕量級）作為基礎映像
+FROM node:20-alpine AS deps
+
+# 設定工作目錄
+WORKDIR /app
+
+# 只複製 package 檔案（利用 Docker 快取層，加速建置）
+COPY package*.json ./
+
+# 安裝所有依賴（包含 devDependencies，因為 build 需要）
+RUN npm ci
+
+# ===== Stage 2: 建置應用程式 =====
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# 從 deps stage 複製已安裝的 node_modules
+COPY --from=deps /app/node_modules ./node_modules
+
+# 複製所有原始碼
+COPY . .
+
+# 執行建置（產生 .next/standalone 資料夾）
+# standalone 模式會自動排除不需要的檔案，只保留運行必需的內容
+RUN npm run build
+
+# ===== Stage 3: 運行應用程式 =====
+FROM node:20-alpine AS runner
+
+WORKDIR /app
+
+# 設定為 production 環境
+ENV NODE_ENV=production
+
+# 建立非 root 使用者（安全性最佳實踐）
+# 避免容器以 root 權限運行
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
+
+# 複製 public 資料夾（靜態資源：圖片、fonts 等）
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+
+# 複製 standalone 伺服器（最小化的 Node.js 伺服器）
+# 這個資料夾包含：
+# - server.js（啟動入口）
+# - 必要的 node_modules（已最小化）
+# - 編譯後的應用程式碼
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+
+# 複製靜態資源（編譯後的 CSS、JS、圖片優化檔案）
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# 切換到非 root 使用者
+USER nextjs
+
+# 開放 3000 port（Next.js 預設 port）
+EXPOSE 3000
+
+# 設定環境變數（可被 docker-compose 覆蓋）
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+# 啟動 Next.js 伺服器
+# server.js 是 standalone 模式自動產生的啟動檔案
+CMD ["node", "server.js"]
+
+# ===== Dockerfile 說明 =====
+# 1. deps stage: 只安裝依賴，利用 Docker 快取加速
+# 2. builder stage: 執行 build，產生 .next/standalone
+# 3. runner stage: 只複製必要檔案，最終 image 最小化
+#
+# 最終 Image 大小約 150-200MB（相比完整 node_modules 的 1GB+）
+#
+# 三階段建置的好處：
+# - 快取優化：package.json 不變時，deps stage 會被快取
+# - 安全性：最終 image 不包含建置工具和開發依賴
+# - 體積小：只有運行必需的檔案
