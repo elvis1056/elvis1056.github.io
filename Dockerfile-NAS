@@ -22,6 +22,10 @@ COPY --from=deps /app/node_modules ./node_modules
 # 複製所有原始碼
 COPY . .
 
+# 使用 NAS 專用的 next.config（output: standalone）
+# 原始的 next.config.ts 是 output: export（給 GitHub Pages 用）
+RUN cp next.config-NAS.ts next.config.ts
+
 # 執行建置（產生 .next/standalone 資料夾）
 # standalone 模式會自動排除不需要的檔案，只保留運行必需的內容
 RUN npm run build
