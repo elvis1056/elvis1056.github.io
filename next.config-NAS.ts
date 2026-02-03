@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
   // ===== 圖片優化 =====
   // standalone 模式支援圖片優化，可以移除 unoptimized
   images: {
-    // unoptimized: true, // 已註解，使用 Next.js 內建圖片優化
+    unoptimized: true, // 已註解，使用 Next.js 內建圖片優化
   },
 
   turbopack: {},
